@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "s:dev": "electron ."
+    "start": "electron .",
+    "s:dev": "SET NODE_ENV=dev&&electromon ."
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
     "electron-debug": "^1.5.0",
     "electron-store": "^1.3.0",
     "mz": "^2.7.0"
+  },
+  "devDependencies": {
+    "electromon": "^1.0.10"
   }
 }
