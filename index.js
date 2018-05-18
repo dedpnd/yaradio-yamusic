@@ -38,8 +38,8 @@ function createWindow(){
         nodeIntegration: false,
         plugins: true
       }
-  })
-
+  })  
+  // https://music.yandex.ru/
   win.loadURL('https://radio.yandex.ru/');
 
   win.on('close', e => {

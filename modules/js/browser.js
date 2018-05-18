@@ -36,6 +36,12 @@ document.onreadystatechange = ()=>{
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{   
+  if(/radio/.test(location.origin)){
+    initRadio();
+  }
+});
+
+function initRadio(){
   //Add href to GitHub
   let cloneFooterElement = null;
   $('div.footer__right').find('div').each((i,e)=>{     
@@ -52,4 +58,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     exec('a.toggleHQ()');
   })
   $('div.head__right').prepend(HQElement);
-});
+
+  document.querySelector(".deco-button-overlay").click()
+}
