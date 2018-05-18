@@ -7,7 +7,7 @@ const iconPath = path.join(__dirname,'../../','media/icon','yaradio.png');
 function ctxTpl(win, app) {
   return [
 		{
-			label: 'Play',
+			label: 'Pause',
 			click: function (e) { return win.send('play')	}		
 		},
     {

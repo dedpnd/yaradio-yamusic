@@ -1,0 +1,28 @@
+div.page-root {
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+span.logo__radio, div.nav__banner-content {
+  display: none;
+}
+
+.hq__icon{
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  line-height: 0;
+  margin: 0 6px;
+  text-align: left;
+  background:url('https://music.yandex.ru/i/81eWNhtChHJCdhrpmzRV6l0LGe8.svg');
+  background-size: 100% 100%;
+  width: 28px;
+  height: 28px;
+  opacity: .4;
+}
+
+.hq__icon:hover{
+  opacity: 1;
+}

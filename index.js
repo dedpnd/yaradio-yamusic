@@ -19,21 +19,25 @@ app.makeSingleInstance(() => {
 
 function createWindow(){
   const lastWindowState = store.get('lastWindowState');
-  console.log(lastWindowState)
-
+  
   const win = new BrowserWindow({
       title: 'YaRadio',
       show: false,
       x: lastWindowState.x,
       y: lastWindowState.y,
-      height: lastWindowState.height || 700,
+      height: lastWindowState.height || 750,
       width: lastWindowState.width || 850,        
       icon: path.join(__dirname,'media/icon','yaradio.png'),      
       titleBarStyle: 'hiddenInset',
-      minHeight: 700,
+      minHeight: 750,
       minWidth: 850,
       autoHideMenuBar: true,
       backgroundColor: '#fff',
+      webPreferences: {   
+        preload: path.join(__dirname,'modules/js', 'browser.js'),     
+        nodeIntegration: false,
+        plugins: true
+      }
   })
 
   win.loadURL('https://radio.yandex.ru/');
@@ -69,7 +73,9 @@ app.on("ready", ()=>{
   ctxMenu.create(win, app);
   win.setMenu(null);
 
-  win.webContents.once('did-finish-load', ()=>{ 
+  let page = win.webContents;
+  page.on('dom-ready', ()=>{ 
+    page.insertCSS(fs.readFileSync(path.join(__dirname, '/modules/css', 'css.css'), 'utf8'));
     win.show();
   })
 })
