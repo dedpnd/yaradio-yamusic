@@ -1,28 +1,29 @@
 div.page-root {
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-span.logo__radio, div.nav__banner-content {
-  display: none;
+span.logo__radio,
+div.nav__banner-content {
+    display: none;
 }
 
-.hq__icon{
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: pointer;
-  line-height: 0;
-  margin: 0 6px;
-  text-align: left;
-  background:url('https://music.yandex.ru/i/81eWNhtChHJCdhrpmzRV6l0LGe8.svg');
-  background-size: 100% 100%;
-  width: 28px;
-  height: 28px;
-  opacity: .4;
+.hq__icon {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 0;
+    margin: 0 6px;
+    text-align: left;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDI4IDI4Ij4gIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+ICAgIDxyZWN0IHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIvPiAgICA8cGF0aCBmaWxsPSIjMjIyMjIyIiBkPSJNMjYuMjQwNTQ2NSwxOC43MjE2Mzk1IEwyNywyMSBMMjUsMjEgTDI0LjMzMzMzMzMsMTkgTDE4LDE5IEMxNi4zNDI5NjM2LDE5IDE1LDE3LjY2MDk3MjQgMTUsMTYgTDE1LDEwIEMxNSw4LjM0MTI5NDkxIDE2LjM0ODMxNDgsNyAxOCw3IEwyNSw3IEMyNi42NTcwMzY0LDcgMjgsOC4zMzkwMjc2MSAyOCwxMCBMMjgsMTEuNSBMMjgsMTYgQzI4LDE3LjM5MDc4MTQgMjcuMTc4NTY4NiwxOC4yOTc5OTQ2IDI2LjI0MDU0NjUsMTguNzIxNjM5NSBaIE0yLDcgTDAsNyBMMCwxOSBMMiwxOSBMMiwxNCBMMTEsMTQgQzExLDE0LjA2MzE4MjcgMTEsMTkgMTEsMTkgTDEzLDE5IEwxMyw3IEwxMSw3IEwxMSwxMiBMMiwxMiBMMiw3IFogTTE3LDE2IEMxNywxNi41NTU4MzY5IDE3LjQ0Njk2NzYsMTcgMTgsMTcgTDI1LDE3IEMyNS41LDE3IDI2LDE2LjU1MjE4NzMgMjYsMTYgTDI2LDEwIEMyNiw5LjQ0NDE2MzExIDI1LjU1MzAzMjQsOSAyNSw5IEwxOCw5IEMxNy40NTA5MzU2LDkgMTcsOS40NDc4MTI3MSAxNywxMCBMMTcsMTYgWiIgb3BhY2l0eT0iLjk5Ii8+ICA8L2c+PC9zdmc+');
+    background-size: 100% 100%;
+    width: 28px;
+    height: 28px;
+    opacity: .4;
 }
 
-.hq__icon:hover{
-  opacity: 1;
+.hq__icon:hover {
+    opacity: 1;
 }
