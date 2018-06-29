@@ -36,12 +36,17 @@ document.onreadystatechange = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (/radio/.test(location.origin)) {
-        initRadio();
-    }
+  if (/radio/.test(location.origin)) {
+    initRadio();
+  } else {
+    initMusic();
+  }
 });
 
 function initRadio() {
+    //Add selector
+    addSelector('','no__active');
+
     //Add href to GitHub
     let cloneFooterElement = null;
     $('div.footer__right').find('div').each((i, e) => {
@@ -54,10 +59,34 @@ function initRadio() {
     $('div.footer__right').append(appendElement);
 
     //Add HQ
-    let HQElement = $('<div class="hq__icon" title="Включить высокое качество"></div>').click(() => {
+    let HQElement = $('<div class="hqRadio__icon" title="Включить высокое качество"></div>').click(() => {
         exec('a.toggleHQ()');
     })
-    $('div.head__right').prepend(HQElement);
+    $('div.head__right').prepend(HQElement);    
+}
 
-    // document.querySelector(".deco-button-overlay").click()
+function initMusic() {
+  //Add selector
+  addSelector('no__active','');
+
+  // Hide Overlay
+  document.querySelector(".deco-button-overlay").click()
+}
+
+function addSelector(yarClass, yamClass){
+  let divBlock = document.createElement("div");
+  divBlock.className = 'block-selector';
+  divBlock.innerHTML = `
+  <div class="yaradio ${yarClass}"></div> 
+  <div class="yamusik ${yamClass}"></div>
+  `
+  divBlock.querySelector('.yaradio').onclick = ()=>{ 
+    window.location = 'https://radio.yandex.ru/'
+  }
+  divBlock.querySelector('.yamusik').onclick = ()=>{ 
+    window.location = 'https://music.yandex.ru/'
+  }
+
+  let pageRoot = document.querySelector('.page-root');    
+  pageRoot.insertBefore(divBlock, pageRoot.querySelector('.overlay'));
 }
