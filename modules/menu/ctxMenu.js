@@ -7,7 +7,7 @@ const iconPath = path.join(__dirname,'../../','media/icon','yaradio.png');
 function ctxTpl(win, app) {
   return [
 		{
-			label: 'Pause',
+			label: 'Play | Pause',
 			click: function (e) { return win.send('play')	}		
 		},
     {
@@ -45,8 +45,8 @@ exports.create = (win, app) => {
   const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
   const appIcon = new Tray(iconPath);
   
-  appIcon.setContextMenu(ctxMenu);
-	appIcon.addListener('click', (e)=>{
+	appIcon.setContextMenu(ctxMenu);	
+	appIcon.addListener('click', (e)=>{		
 		e.preventDefault();
 		if (win.isVisible()){
 			win.hide();

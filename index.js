@@ -18,7 +18,8 @@ app.makeSingleInstance(() => {
 });
 
 function createWindow() {
-    const lastWindowState = store.get('lastWindowState');
+    const lastWindowState = store.get('lastWindowState'),
+            lastApp = store.get('lastApp');
 
     const win = new BrowserWindow({
             title: 'YaRadio',
@@ -26,11 +27,11 @@ function createWindow() {
             x: lastWindowState.x,
             y: lastWindowState.y,
             height: lastWindowState.height || 700,
-            width: lastWindowState.width || 800,
+            width: lastWindowState.width || 830,
             icon: path.join(__dirname, 'media/icon', 'yaradio.png'),
             titleBarStyle: 'hiddenInset',
             minHeight: 700,
-            minWidth: 800,
+            minWidth: 830,
             autoHideMenuBar: true,
             backgroundColor: '#fff',
             webPreferences: {
@@ -39,7 +40,12 @@ function createWindow() {
                 plugins: true
             }
         })        
-    win.loadURL('https://radio.yandex.ru/');
+    win.loadURL((()=>{ 
+        if(lastApp == 'YaMusic'){            
+            return 'https://music.yandex.ru/'
+        }        
+        return 'https://radio.yandex.ru/'
+    })());
 
     win.on('close', e => {
         if (!store.get('quit?')) {
@@ -61,6 +67,14 @@ function createWindow() {
     });
 
     win.on('page-title-updated', e => {
+        let history = e.sender.webContents.history;
+        if(/radio/.test(history[history.length - 1])){
+            win.setTitle('YaRadio');
+            win.setIcon(path.join(__dirname, 'media/icon', 'yaradio.png'));
+        } else {
+            win.setTitle('YaMusic');
+            win.setIcon(path.join(__dirname, 'media/icon', 'yamusik.png'));
+        }
         e.preventDefault();
     });
 
@@ -85,4 +99,6 @@ app.on('before-quit', () => {
     if (!win.isFullScreen()) {
         store.set('lastWindowState', win.getBounds());
     }
+
+    store.set('lastApp',win.getTitle());
 });

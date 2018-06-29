@@ -80,6 +80,11 @@ function addSelector(yarClass, yamClass){
   <div class="yaradio ${yarClass}"></div> 
   <div class="yamusik ${yamClass}"></div>
   `
+
+  if(yamClass){
+    divBlock.style.left = '5rem'
+  }
+
   divBlock.querySelector('.yaradio').onclick = ()=>{ 
     window.location = 'https://radio.yandex.ru/'
   }
