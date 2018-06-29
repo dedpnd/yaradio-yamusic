@@ -1,11 +1,15 @@
 {
     "name": "yaradio-yamusic",
-    "version": "1.0.0",
+    "version": "0.3.0",
     "description": "",
     "main": "index.js",
     "scripts": {
         "start": "electron .",
-        "s:dev": "SET NODE_ENV=dev&&electromon ."
+        "s:dev": "SET NODE_ENV=dev&&electromon .",
+        "build:all": "",
+        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio.ico -app-version=$npm_package_name-$npm_package_version && cd dist/temp && zip -ryq9 ../$npm_package_name-windows-${npm_package_version}.zip",
+        "build:linux": "cross-var $npm_package_name",
+        "build:mac": ""
     },
     "repository": {
         "type": "git",
@@ -25,6 +29,8 @@
         "mz": "^2.7.0"
     },
     "devDependencies": {
-        "electromon": "^1.0.10"
+        "cross-var": "^1.1.0",
+        "electromon": "^1.0.10",
+        "electron-packager": "^12.1.0"
     }
 }
