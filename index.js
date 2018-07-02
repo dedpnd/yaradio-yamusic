@@ -70,10 +70,14 @@ function createWindow() {
         let history = e.sender.webContents.history;
         if(/radio/.test(history[history.length - 1])){
             win.setTitle('YaRadio');
-            win.setIcon(path.join(__dirname, 'media/icon', 'yaradio.png'));
+            if(process.platform !== 'darwin'){
+                win.setIcon(path.join(__dirname, 'media/icon', 'yaradio.png'));
+            }            
         } else {
             win.setTitle('YaMusic');
-            win.setIcon(path.join(__dirname, 'media/icon', 'yamusic.png'));
+            if(process.platform !== 'darwin'){
+                win.setIcon(path.join(__dirname, 'media/icon', 'yamusic.png'));
+            }            
         }
         e.preventDefault();
     });
