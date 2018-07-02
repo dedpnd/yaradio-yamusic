@@ -78,7 +78,7 @@ function addSelector(yarClass, yamClass){
   divBlock.className = 'block-selector';
   divBlock.innerHTML = `
   <div class="yaradio ${yarClass}"></div> 
-  <div class="yamusik ${yamClass}"></div>
+  <div class="yamusic ${yamClass}"></div>
   `
 
   if(yamClass){
@@ -88,7 +88,7 @@ function addSelector(yarClass, yamClass){
   divBlock.querySelector('.yaradio').onclick = ()=>{ 
     window.location = 'https://radio.yandex.ru/'
   }
-  divBlock.querySelector('.yamusik').onclick = ()=>{ 
+  divBlock.querySelector('.yamusic').onclick = ()=>{ 
     window.location = 'https://music.yandex.ru/'
   }
 

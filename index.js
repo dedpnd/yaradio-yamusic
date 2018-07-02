@@ -73,7 +73,7 @@ function createWindow() {
             win.setIcon(path.join(__dirname, 'media/icon', 'yaradio.png'));
         } else {
             win.setTitle('YaMusic');
-            win.setIcon(path.join(__dirname, 'media/icon', 'yamusik.png'));
+            win.setIcon(path.join(__dirname, 'media/icon', 'yamusic.png'));
         }
         e.preventDefault();
     });

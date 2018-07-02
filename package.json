@@ -1,15 +1,16 @@
 {
     "name": "yaradio-yamusic",
+    "productName": "Yandex.Music.App",
     "version": "0.3.0",
     "description": "",
     "main": "index.js",
     "scripts": {
         "start": "electron .",
         "s:dev": "SET NODE_ENV=dev&&electromon .",
-        "build:all": "",
-        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio.ico -app-version=$npm_package_name-$npm_package_version && cd dist/temp && zip -ryq9 ../$npm_package_name-windows-${npm_package_version}.zip",
-        "build:linux": "cross-var $npm_package_name",
-        "build:mac": ""
+        "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
+        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true",
+        "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true",
+        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music"
     },
     "repository": {
         "type": "git",
