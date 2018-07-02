@@ -2,7 +2,7 @@ const path = require('path');
 const store = require('../store/store');
 const { Menu, Tray } = require('electron');
 
-const iconPath = path.join(__dirname,'../../','media/icon','yaradio.png');
+const iconPath = path.join(__dirname,'../../','media/icon','yaradio_16x16.png');
 
 function ctxTpl(win, app) {
   return [
