@@ -1,10 +1,11 @@
 # Yandex Radio <img src="media/icon/yaradio.png" width="32"> and Yandex Music <img src="media/icon/yamusic.png" width="32">
 
 Desktop app for [Yandex Radio](https://radio.yandex.ru/) and [Yandex Music](https://music.yandex.ru/).  
+
 <img src="media/md/example.gif" width="75%">
 
 ## Install  
-Following [platforms]((https://github.com/electron/electron/blob/master/docs/tutorial/support.md#supported-platforms)) are supported by app.  
+Following [platforms](https://github.com/electron/electron/blob/master/docs/tutorial/support.md#supported-platforms) are supported by app.  
 Unzip and use!
 
 ### Win
