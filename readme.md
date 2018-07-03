@@ -19,7 +19,7 @@ Unzip and use!
 [Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-linux-armv7l.zip)  
 
 ### Mac
-[Download - **x64**](-)  
+[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-darwin-x64.zip)  
 
 ## Related
 [yam](https://github.com/artemeff/yam) - Yet Another Music Player / Yandex.Music Desktop Client  
