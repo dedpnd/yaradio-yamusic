@@ -8,7 +8,7 @@ if (process.env.node_env == 'dev') require('electron-debug')({ enabled: true, sh
 
 let win
 
-app.makeSingleInstance(() => {
+let appRunning = app.makeSingleInstance(() => {
     if (win) {
         if (win.isMinimized()) {
             win.restore();
@@ -16,6 +16,10 @@ app.makeSingleInstance(() => {
         win.focus();
     }
 });
+
+if(appRunning) {
+    app.quit();
+}
 
 function createWindow() {
     const lastWindowState = store.get('lastWindowState'),
@@ -39,11 +43,11 @@ function createWindow() {
                 nodeIntegration: false,
                 plugins: true
             }
-        })        
-    win.loadURL((()=>{ 
-        if(lastApp == 'YaMusic'){            
+        })
+    win.loadURL((()=>{
+        if(lastApp == 'YaMusic'){
             return 'https://music.yandex.ru/'
-        }        
+        }
         return 'https://radio.yandex.ru/'
     })());
 
@@ -71,13 +75,13 @@ function createWindow() {
         if(/radio/.test(history[history.length - 1])){
             win.setTitle('YaRadio');
             if(process.platform !== 'darwin'){
-                win.setIcon(path.join(__dirname, 'media/icon', 'yaradio.png'));
-            }            
+                win.setIcon(path.join(__dirname, 'media/icon', 'yaradio_32x32.png'));
+            }
         } else {
             win.setTitle('YaMusic');
             if(process.platform !== 'darwin'){
-                win.setIcon(path.join(__dirname, 'media/icon', 'yamusic.png'));
-            }            
+                win.setIcon(path.join(__dirname, 'media/icon', 'yamusic_32x32.png'));
+            }
         }
         e.preventDefault();
     });
