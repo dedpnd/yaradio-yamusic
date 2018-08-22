@@ -9,17 +9,17 @@ Following [platforms](https://github.com/electron/electron/blob/master/docs/tuto
 Unzip and use!
 
 ### Win
-[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-win32-x64.zip)   
-[Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-win32-ia32.zip)  
+[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-win32-x64.zip)   
+[Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-win32-ia32.zip)  
 
 ### Linux 
-[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-linux-x64.zip)   
-[Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-linux-ia32.zip)  
-[Download - **arm64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-linux-arm64.zip)   
-[Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-linux-armv7l.zip)  
+[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-linux-x64.zip)   
+[Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-linux-ia32.zip)  
+[Download - **arm64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-linux-arm64.zip)   
+[Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-linux-armv7l.zip)  
 
 ### Mac
-[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.0/Yandex.Music.App-darwin-x64.zip)  
+[Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.2/Yandex.Music.App-darwin-x64.zip)  
 
 ## Related
 [yam](https://github.com/artemeff/yam) - Yet Another Music Player / Yandex.Music Desktop Client  
