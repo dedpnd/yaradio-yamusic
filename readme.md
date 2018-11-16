@@ -2,6 +2,7 @@
 
 Desktop app for [Yandex Radio](https://radio.yandex.ru/) and [Yandex Music](https://music.yandex.ru/).
 Thank you for choosing my app :relaxed:
+
 <img src="media/md/example.gif" width="75%">
 
 ## Install
