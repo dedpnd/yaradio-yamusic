@@ -12,7 +12,7 @@ Unzip and use!
 ### Download
 |  Windows |  Linux | Mac  |
 | ------------ | ------------ | ------------ |
-| [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-win32-x64.zip)    | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-x64.zip) | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-darwin-x64.zip) |
+| [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-win32-x64.zip)    | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-x64.zip) | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-darwin-x64.7z) |
 | [Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-win32-ia32.zip)   | [Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-ia32.zip) |   |
 |   | [Download - **arm64**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-arm64.zip)  |   |
 |   | [Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-armv7l.zip) |   | |
