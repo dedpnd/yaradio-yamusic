@@ -1,10 +1,17 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { app, BrowserWindow } = require('electron');
+const {
+    app,
+    BrowserWindow
+} = require('electron');
 const store = require('./modules/store/store');
 const ctxMenu = require('./modules/menu/ctxMenu');
 
-if (process.env.node_env == 'dev') require('electron-debug')({ enabled: true, showDevTools: 'undocked' });
+if (process.env.node_env == 'dev')
+    require('electron-debug')({
+        enabled: true,
+        showDevTools: 'undocked'
+    });
 
 let win
 
@@ -17,35 +24,35 @@ let appRunning = app.makeSingleInstance(() => {
     }
 });
 
-if(appRunning) {
+if (appRunning) {
     app.quit();
 }
 
 function createWindow() {
     const lastWindowState = store.get('lastWindowState'),
-            lastApp = store.get('lastApp');
+        lastApp = store.get('lastApp');
 
     const win = new BrowserWindow({
-            title: 'YaRadio',
-            show: false,
-            x: lastWindowState.x,
-            y: lastWindowState.y,
-            height: lastWindowState.height || 700,
-            width: lastWindowState.width || 830,
-            icon: path.join(__dirname, 'media/icon', 'yaradio.png'),
-            titleBarStyle: 'hiddenInset',
-            minHeight: 700,
-            minWidth: 830,
-            autoHideMenuBar: true,
-            backgroundColor: '#fff',
-            webPreferences: {
-                preload: path.join(__dirname, 'modules/js', 'browser.js'),
-                nodeIntegration: false,
-                plugins: true
-            }
-        })
-    win.loadURL((()=>{
-        if(lastApp == 'YaMusic'){
+        title: 'YaRadio',
+        show: false,
+        x: lastWindowState.x,
+        y: lastWindowState.y,
+        height: lastWindowState.height || 700,
+        width: lastWindowState.width || 848,
+        icon: path.join(__dirname, 'media/icon', 'yaradio.png'),
+        titleBarStyle: 'hiddenInset',
+        minHeight: 700,
+        minWidth: 848,
+        autoHideMenuBar: true,
+        backgroundColor: '#fff',
+        webPreferences: {
+            preload: path.join(__dirname, 'modules/js', 'browser.js'),
+            nodeIntegration: false,
+            plugins: true
+        }
+    })
+    win.loadURL((() => {
+        if (lastApp == 'YaMusic') {
             return 'https://music.yandex.ru/'
         }
         return 'https://radio.yandex.ru/'
@@ -72,14 +79,14 @@ function createWindow() {
 
     win.on('page-title-updated', e => {
         let history = e.sender.webContents.history;
-        if(/radio/.test(history[history.length - 1])){
+        if (/radio/.test(history[history.length - 1])) {
             win.setTitle('YaRadio');
-            if(process.platform !== 'darwin'){
+            if (process.platform !== 'darwin') {
                 win.setIcon(path.join(__dirname, 'media/icon', 'yaradio_32x32.png'));
             }
         } else {
             win.setTitle('YaMusic');
-            if(process.platform !== 'darwin'){
+            if (process.platform !== 'darwin') {
                 win.setIcon(path.join(__dirname, 'media/icon', 'yamusic_32x32.png'));
             }
         }
@@ -108,5 +115,5 @@ app.on('before-quit', () => {
         store.set('lastWindowState', win.getBounds());
     }
 
-    store.set('lastApp',win.getTitle());
+    store.set('lastApp', win.getTitle());
 });

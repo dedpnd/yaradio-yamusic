@@ -1,4 +1,8 @@
-const { ipcRenderer, webFrame, shell } = require('electron');
+const {
+    ipcRenderer,
+    webFrame,
+    shell
+} = require('electron');
 
 const el = {
     prefButton: '.page-root .settings',
@@ -36,16 +40,16 @@ document.onreadystatechange = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (/radio/.test(location.origin)) {
-    initRadio();
-  } else {
-    initMusic();
-  }
+    if (/radio/.test(location.origin)) {
+        initRadio();
+    } else {
+        initMusic();
+    }
 });
 
 function initRadio() {
     //Add selector
-    addSelector('','no__active');
+    addSelector('', 'no__active');
 
     //Add href to GitHub
     let cloneFooterElement = null;
@@ -62,36 +66,42 @@ function initRadio() {
     let HQElement = $('<div class="hqRadio__icon" title="Включить высокое качество"></div>').click(() => {
         exec('a.toggleHQ()');
     })
-    $('div.head__right').prepend(HQElement);    
+    $('div.head__right').prepend(HQElement);
 }
 
 function initMusic() {
-  //Add selector
-  addSelector('no__active','');
+    //Add selector
+    addSelector('no__active', '');
 
-  // Hide Overlay
-  document.querySelector(".deco-button-overlay").click()
+    // Hide Overlay
+    // document.querySelector(".deco-button-overlay").click();
 }
 
-function addSelector(yarClass, yamClass){
-  let divBlock = document.createElement("div");
-  divBlock.className = 'block-selector';
-  divBlock.innerHTML = `
-  <div class="yaradio ${yarClass}"></div> 
-  <div class="yamusic ${yamClass}"></div>
-  `
+function addSelector(yarClass, yamClass) {
+    let divBlock = document.createElement("div");
+    divBlock.className = 'block-selector';
+    divBlock.innerHTML = `
+        <div class="yaradio ${yarClass}"></div>
+        <div class="yamusic ${yamClass}"></div>
+    `
 
-  if(yamClass){
-    divBlock.style.left = '5rem'
-  }
+    if (yamClass) {
+        divBlock.style.left = '5rem'
+    }
 
-  divBlock.querySelector('.yaradio').onclick = ()=>{ 
-    window.location = 'https://radio.yandex.ru/'
-  }
-  divBlock.querySelector('.yamusic').onclick = ()=>{ 
-    window.location = 'https://music.yandex.ru/'
-  }
+    divBlock.querySelector('.yaradio').onclick = () => {
+        window.location = 'https://radio.yandex.ru/'
+    }
+    divBlock.querySelector('.yamusic').onclick = () => {
+        window.location = 'https://music.yandex.ru/'
+    }
 
-  let pageRoot = document.querySelector('.page-root');    
-  pageRoot.insertBefore(divBlock, pageRoot.querySelector('.overlay'));
+    let pageRoot = document.querySelector('.page-root');
+
+    // For ya-music because overlay playlist
+    if(pageRoot.querySelector('.head.deco-pane')){
+        pageRoot.insertBefore(divBlock, pageRoot.querySelector('.head').nextSibling);
+        return
+    }
+    pageRoot.insertBefore(divBlock, pageRoot.querySelector('.overlay'));
 }

@@ -1,16 +1,16 @@
 {
     "name": "yaradio-yamusic",
     "productName": "Yandex.Music.App",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
     "main": "index.js",
     "scripts": {
         "start": "electron .",
         "s:dev": "SET NODE_ENV=dev&&electromon .",
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
-        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
-        "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
-        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music --ignore=distr"
+        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
+        "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
+        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music --ignore=distr"
     },
     "repository": {
         "type": "git",
@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
     "dependencies": {
-        "electron": "^2.0.1",
+        "electron": "^2.0.13",
         "electron-context-menu": "^0.9.1",
         "electron-debug": "^1.5.0",
         "electron-store": "^1.3.0",
@@ -32,6 +32,6 @@
     "devDependencies": {
         "cross-var": "^1.1.0",
         "electromon": "^1.0.10",
-        "electron-packager": "^12.1.0"
+        "electron-packager": "^12.2.0"
     }
 }
