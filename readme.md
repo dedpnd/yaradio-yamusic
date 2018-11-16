@@ -18,16 +18,16 @@ Unzip and use!
 |   | [Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/download/latest/Yandex.Music.App-linux-armv7l.zip) |   | |
 
 ## Related
-[yam](https://github.com/artemeff/yam) - Yet Another Music Player / Yandex.Music Desktop Client
-[yaradio](https://github.com/maxvipon/yaradio) - Yandex.Radio Unofficial Desktop app
+[yam](https://github.com/artemeff/yam) - Yet Another Music Player / Yandex.Music Desktop Client  
+[yaradio](https://github.com/maxvipon/yaradio) - Yandex.Radio Unofficial Desktop app  
 
 ## Command for dev
-`start` - start app.
-`s:dev` - start app for dev.
-`build:all` - build for all platform.
-`build:win` - build for windows.
-`build:linux` - build for linux.
-`build:mac` - build for mac.
+`start` - start app.  
+`s:dev` - start app for dev.  
+`build:all` - build for all platform.  
+`build:win` - build for windows.  
+`build:linux` - build for linux.  
+`build:mac` - build for mac.  
 
-## License
+## License  
 MIT ©
