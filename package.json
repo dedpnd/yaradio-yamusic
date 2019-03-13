@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
     "dependencies": {
-        "electron": "^2.0.13",
+        "electron": "^2.0.18",
         "electron-context-menu": "^0.9.1",
         "electron-debug": "^1.5.0",
         "electron-store": "^1.3.0",
