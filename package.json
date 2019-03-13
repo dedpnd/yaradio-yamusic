@@ -1,12 +1,12 @@
 {
     "name": "yaradio-yamusic",
     "productName": "Yandex.Music.App",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
     "main": "index.js",
     "scripts": {
         "start": "electron .",
-        "s:dev": "SET NODE_ENV=dev&&electromon .",
+        "s:dev": "SET NODE_ENV=dev&&electron .",
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
         "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
         "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
@@ -31,7 +31,6 @@
     },
     "devDependencies": {
         "cross-var": "^1.1.0",
-        "electromon": "^1.0.10",
         "electron-packager": "^13.1.1"
     }
 }

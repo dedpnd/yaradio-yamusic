@@ -10,6 +10,7 @@ const el = {
     mute: '.page-root .volume',
     play: '.page-station .player-controls__play',
     next: '.page-station .slider__item_next',
+    prev: '.page-station .slider__item_prev',
     like: '.page-station .button.like_action_like',
     dislike: '.page-station .button.like_action_dislike',
     activeStation: '.page-index .station_playing'
@@ -28,6 +29,7 @@ function click(s) {
 
 ipcRenderer.on('play', () => exec('a.togglePause()'));
 ipcRenderer.on('next', () => exec('a.next()'));
+ipcRenderer.on('prev', () => click(el.prev));
 ipcRenderer.on('like', () => click(el.like));
 ipcRenderer.on('dislike', () => click(el.dislike));
 ipcRenderer.on('mute', () => exec('a.mute()'));
@@ -48,11 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initRadio() {
-    //Add selector
+    // Add selector
     addSelector('', 'no__active');
 
-    //Add href to GitHub
-    let cloneFooterElement = null;
+    // Add href to GitHub
+    // let cloneFooterElement = null;
     $('div.footer__right').find('div').each((i, e) => {
         $(e).css('display', 'none');
     })
@@ -70,7 +72,7 @@ function initRadio() {
 }
 
 function initMusic() {
-    //Add selector
+    // Add selector
     addSelector('no__active', '');
 
     // Hide Overlay

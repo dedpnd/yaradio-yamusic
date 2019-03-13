@@ -1,5 +1,6 @@
 const path = require('path');
-const store = require('../store/store');
+// ???
+// const store = require('../store/store');
 const { Menu, Tray } = require('electron');
 
 const iconPath = path.join(__dirname,'../../','media/icon','yaradio_16x16.png');
@@ -8,21 +9,21 @@ function ctxTpl(win, app) {
   return [
 		{
 			label: 'Play | Pause',
-			click: function (e) { return win.send('play')	}		
+			click: () => win.send('play')
 		},
     {
 			label: 'Next Track',
-			click: () => win.send('next')			
+			click: () => win.send('next')
 		},
 		{
 			type: 'separator'
 		},
 		{
-			label: 'Like', 
+			label: 'Like',
 			click: () => win.send('like')
 		},
 		{
-			label: 'Dislike', 
+			label: 'Dislike',
 			click: () => win.send('dislike')
 		},
 		{
@@ -34,7 +35,7 @@ function ctxTpl(win, app) {
 			}
 		},
 		{
-			label: 'Quit', click: function () {		        	
+			label: 'Quit', click: function () {
 				app.quit();
 			}
 		}
@@ -44,9 +45,9 @@ function ctxTpl(win, app) {
 exports.create = (win, app) => {
   const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
   const appIcon = new Tray(iconPath);
-  
-	appIcon.setContextMenu(ctxMenu);	
-	appIcon.addListener('click', (e)=>{		
+
+	appIcon.setContextMenu(ctxMenu);
+	appIcon.addListener('click', (e)=>{
 		e.preventDefault();
 		if (win.isVisible()){
 			win.hide();
