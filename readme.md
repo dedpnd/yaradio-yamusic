@@ -3,6 +3,8 @@
 > Desktop app for [Yandex Radio](https://radio.yandex.ru/) and [Yandex Music](https://music.yandex.ru/).  
 > Thank you for choosing my app :relaxed:  
 
+  
+
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dedpnd/yaradio-yamusic.svg)
 ![GitHub issues](https://img.shields.io/github/issues/dedpnd/yaradio-yamusic.svg)
