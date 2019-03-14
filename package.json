@@ -18,6 +18,16 @@
     },
     "author": "dedpnd",
     "license": "MIT",
+    "keyword": [
+        "electron",
+        "electron.app",
+        "electronapp",
+        "yandex music app",
+        "yandex.music.app",
+        "yandex radio app",
+        "yandex.radio.app",
+        "electron music player"
+      ],
     "bugs": {
         "url": "https://github.com/dedpnd/yaradio-yamusic/issues"
     },
