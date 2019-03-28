@@ -26,11 +26,11 @@ exports.init = (win, app) => {
   const tplShortcut = shortcutTpl(win);
 
   tplShortcut.forEach((e)=>{
-    globalShortcut.register(e.accelerator, e.func)
+    globalShortcut.register(e.accelerator, e.func);
   })
 
   app.on('will-quit', () => {
     // Unregister all shortcuts.
-    globalShortcut.unregisterAll()
+    globalShortcut.unregisterAll();
   })
 }

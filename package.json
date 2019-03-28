@@ -27,7 +27,7 @@
         "yandex radio app",
         "yandex.radio.app",
         "electron music player"
-      ],
+    ],
     "bugs": {
         "url": "https://github.com/dedpnd/yaradio-yamusic/issues"
     },

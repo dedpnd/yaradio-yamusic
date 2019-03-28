@@ -14,8 +14,7 @@ if (process.env.node_env == 'dev')
     showDevTools: 'undocked'
   });
 
-let win
-
+let win;
 let appRunning = app.requestSingleInstanceLock();
 
 if (!appRunning) {
