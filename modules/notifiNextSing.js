@@ -44,8 +44,8 @@ const getImg = `
 
 exports.init = (win) => {
   session.defaultSession.webRequest.onBeforeRequest(['*'], (details, callback) => {
-    if (/m\?hq/.test(details.url)) {
-      sendNotifi()
+    if (/start\?__t/.test(details.url)) {
+      setTimeout(sendNotifi,1000)
     }
     callback(details);
   })
@@ -62,21 +62,11 @@ exports.init = (win) => {
     let checkData = async () => {
       return await win.webContents.executeJavaScript(command);
     }
-    let store, count = 0;
-
-    store = await checkData()
-    while (store === await checkData()) {
-      await delay(500)
-      count++
-      if (count >= 10) {
-        return null
-      }
-    }
     return await checkData()
   }
 
   // Util
-  function delay(millis) {
-    return new Promise((resolve) => setTimeout(resolve, millis));
-  }
+  // function delay(millis) {
+  //   return new Promise((resolve) => setTimeout(resolve, millis));
+  // }
 }
