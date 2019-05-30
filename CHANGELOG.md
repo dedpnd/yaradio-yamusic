@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/dedpnd/yaradio-yamusic/tree/HEAD)
-
-[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.4...HEAD)
+## [v.0.3.5](https://github.com/dedpnd/yaradio-yamusic/tree/v.0.3.5) (2019-05-30)
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.4...v.0.3.5)
 
 **Implemented enhancements:**
 
