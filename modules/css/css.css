@@ -1,11 +1,5 @@
 /* !YaRadio */
-div.page-root {
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-/* logo */
+/* Logo */
 span.logo {
   background-image: none !important;
 }
@@ -15,7 +9,19 @@ div.nav__banner-content {
   display: none;
 }
 
-/* icon hq */
+div.page-root {
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Footer */
+div.footer__right div {
+  display: none;
+}
+
+/* Custom */
+/* Icon hq */
 .hqRadio__icon {
   display: inline-block;
   position: relative;
@@ -36,7 +42,7 @@ div.nav__banner-content {
 }
 
 /* !YaMusic */
-/* logo */
+/* Logo */
 span.d-logo {
   background-image: none !important;
 }
@@ -46,12 +52,12 @@ span.d-logo {
   display: none !important;
 }
 
-/* overhead */
+/* Overhead */
 .d-overhead {
   display: none !important;
 }
 
-/*popup*/
+/* Popup */
 .popup.popup_page.deco-pane {
   height: 100%;
 }
@@ -64,6 +70,7 @@ div.centerblock-wrapper {
   margin-right: 0px !important;
 }
 
+/* Sidebar */
 div.sidebar__placeholder {
   display: none !important;
 }
@@ -74,11 +81,11 @@ div.bar-below__auth,
   display: none !important;
 }
 
+/* Footer */
 div.footer-app-install {
   display: none !important;
 }
 
-/*footer*/
 .centerblock-wrapper.deco-pane .footer {
   display: none !important;
 }

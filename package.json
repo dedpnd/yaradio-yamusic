@@ -1,7 +1,7 @@
 {
     "name": "yaradio-yamusic",
     "productName": "Yandex.Music.App",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
     "main": "index.js",
     "scripts": {
@@ -10,7 +10,8 @@
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
         "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
         "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
-        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music --ignore=distr"
+        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music --ignore=distr",
+        "gen:changelog": "github_changelog_generator -u dedpnd -p yaradio-yamusic"
     },
     "repository": {
         "type": "git",
@@ -37,7 +38,10 @@
         "electron-context-menu": "^0.11.0",
         "electron-debug": "^2.1.0",
         "electron-store": "^2.0.0",
-        "mz": "^2.7.0"
+        "mz": "^2.7.0",
+        "node-notifier": "^5.4.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4"
     },
     "devDependencies": {
         "cross-var": "^1.1.0",

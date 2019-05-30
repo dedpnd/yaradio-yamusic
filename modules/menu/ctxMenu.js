@@ -1,17 +1,17 @@
 const path = require('path');
-// ???
-// const store = require('../store/store');
+const store = require('../store/store');
+const notification = require('../notification/notification');
 const { Menu, Tray } = require('electron');
 
-const iconPath = path.join(__dirname,'../../','media/icon','yaradio_16x16.png');
+const iconPath = path.join(__dirname, '../../', 'media/icon', 'yaradio_16x16.png');
 
 function ctxTpl(win, app) {
-  return [
+	return [
 		{
 			label: 'Play | Pause',
 			click: () => win.send('play')
 		},
-    {
+		{
 			label: 'Next Track',
 			click: () => win.send('next')
 		},
@@ -30,33 +30,50 @@ function ctxTpl(win, app) {
 			type: 'separator'
 		},
 		{
-			label: 'Show App', click: function () {
+			label: 'Show App',
+			click: function () {
 				win.show();
 			}
 		},
 		{
-			label: 'Quit', click: function () {
+			type: 'submenu',
+			label: 'Settings',
+			submenu: [{
+				type: 'checkbox',
+				label: 'Notification',
+				checked: store.get('settings.notifications'),
+				click: () => {
+					let value = !store.get('settings.notifications');
+					notification.notifi('Settings', value ? 'Notification enabled' : 'Notification disabled', null, true);
+
+					store.set('settings.notifications', value);
+				}
+			}]
+		},
+		{
+			label: 'Quit',
+			click: function () {
 				app.quit();
 			}
 		}
-  ]
+	]
 }
 
 exports.create = (win, app) => {
-  const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
-  const appIcon = new Tray(iconPath);
+	const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
+	const appIcon = new Tray(iconPath);
 
 	appIcon.setContextMenu(ctxMenu);
-	appIcon.addListener('click', (e)=>{
+	appIcon.addListener('click', (e) => {
 		e.preventDefault();
-		if (win.isVisible()){
+		if (win.isVisible()) {
 			win.hide();
 		} else {
 			win.show();
 		}
 	})
 
-  win.on('show', function () {
+	win.on('show', function () {
 		appIcon.setHighlightMode('always')
 	})
 

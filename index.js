@@ -2,11 +2,13 @@ const path = require('path');
 const fs = require('mz/fs');
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
 } = require('electron');
 const store = require('./modules/store/store');
 const ctxMenu = require('./modules/menu/ctxMenu');
 const globalShortcut = require('./modules/globalShortcut');
+const skipAdvert = require('./modules/skipAdvert');
+const notifiNextSing = require('./modules/notifiNextSing');
 
 if (process.env.node_env == 'dev')
   require('electron-debug')({
@@ -103,12 +105,16 @@ app.on("ready", () => {
   ctxMenu.create(win, app);
   globalShortcut.init(win, app);
   win.setMenu(null);
-
   let page = win.webContents;
   page.on('dom-ready', () => {
     page.insertCSS(fs.readFileSync(path.join(__dirname, '/modules/css', 'css.css'), 'utf8'));
     win.show();
   })
+
+  // Skip advertising
+  skipAdvert.init();
+  // Notification for next sing
+  notifiNextSing.init(win);
 })
 
 app.on('before-quit', () => {
