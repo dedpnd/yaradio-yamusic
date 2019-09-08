@@ -72,7 +72,7 @@ function createWindow() {
         win.hide();
         break;
       case 'linux':
-        win.minimize();
+        win.hide();
         break;
       case 'darwin':
         app.hide();

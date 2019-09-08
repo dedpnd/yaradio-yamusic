@@ -30,9 +30,9 @@ function ctxTpl(win, app) {
 			type: 'separator'
 		},
 		{
-			label: 'Show App',
+			label: 'Show/Hide App',
 			click: function () {
-				win.show();
+				toggleWindowVisibility(win);
 			}
 		},
 		{
@@ -59,18 +59,24 @@ function ctxTpl(win, app) {
 	]
 }
 
+function toggleWindowVisibility(win) {
+	if (win.isVisible()) {
+		win.hide();
+	} else {
+		win.show();
+	}
+}
+
 exports.create = (win, app) => {
+
 	const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
+
 	const appIcon = new Tray(iconPath);
 
 	appIcon.setContextMenu(ctxMenu);
 	appIcon.addListener('click', (e) => {
 		e.preventDefault();
-		if (win.isVisible()) {
-			win.hide();
-		} else {
-			win.show();
-		}
+		toggleWindowVisibility(win);
 	})
 
 	win.on('show', function () {
