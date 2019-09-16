@@ -37,7 +37,7 @@ const getImg = `
       return 'https:' + trackImg.replace('url("','').replace('")','').replace(/\d+x\d+/, '100x100')
     }
 
-    trackImg = document.querySelector('.track-cover') && document.querySelector('.track-cover').getAttribute('src')
+    trackImg = document.querySelector('.track-cover img') && document.querySelector('.track-cover img').getAttribute('src')
     return 'https:' + trackImg.replace(/\d+x\d+/, '100x100')
   })();
 `;
@@ -45,14 +45,14 @@ const getImg = `
 exports.init = (win) => {
   session.defaultSession.webRequest.onBeforeRequest(['*'], (details, callback) => {
     if (/start\?__t/.test(details.url)) {
-      setTimeout(sendNotifi,1000)
+      setTimeout(sendNotifi, 1000)
     }
     callback(details);
   })
 
   function sendNotifi() {
     Promise.all([getInfoFromDOM(getTrack), getInfoFromDOM(getArtist), getInfoFromDOM(getImg)]).then((v) => {
-      if (v[0] && v[1]){
+      if (v[0] && v[1]) {
         notification.notifi(v[0], v[1], v[2]);
       }
     })
@@ -65,8 +65,9 @@ exports.init = (win) => {
     return await checkData()
   }
 
-  // Util
-  // function delay(millis) {
-  //   return new Promise((resolve) => setTimeout(resolve, millis));
-  // }
 }
+
+// Util
+// function delay(millis) {
+//   return new Promise((resolve) => setTimeout(resolve, millis));
+// }
