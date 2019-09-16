@@ -1,5 +1,28 @@
 # Change Log
 
+## [Unreleased](https://github.com/dedpnd/yaradio-yamusic/tree/HEAD)
+
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.6...HEAD)
+
+**Fixed bugs:**
+
+- Cannot open on macOs 10.14.6 [\#5](https://github.com/dedpnd/yaradio-yamusic/issues/5)
+
+## [v.0.3.6](https://github.com/dedpnd/yaradio-yamusic/tree/v.0.3.6) (2019-09-16)
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.5...v.0.3.6)
+
+**Implemented enhancements:**
+
+- Next song notification title [\#3](https://github.com/dedpnd/yaradio-yamusic/issues/3)
+
+**Fixed bugs:**
+
+- Cant hide to tray in latest release \(v0.3.5\) [\#7](https://github.com/dedpnd/yaradio-yamusic/issues/7)
+
+**Merged pull requests:**
+
+- Show/hide tray menu item + hide to tray on close window on linux [\#9](https://github.com/dedpnd/yaradio-yamusic/pull/9) ([kuntashov](https://github.com/kuntashov))
+
 ## [v.0.3.5](https://github.com/dedpnd/yaradio-yamusic/tree/v.0.3.5) (2019-05-30)
 [Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.4...v.0.3.5)
 

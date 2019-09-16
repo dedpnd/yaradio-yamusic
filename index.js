@@ -8,7 +8,6 @@ const {
 const store = require('./modules/store/store');
 const ctxMenu = require('./modules/menu/ctxMenu');
 const globalShortcut = require('./modules/globalShortcut');
-const skipAdvert = require('./modules/skipAdvert');
 const notifiNextSing = require('./modules/notifiNextSing');
 
 if (process.env.node_env == 'dev')
