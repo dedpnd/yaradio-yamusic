@@ -1,6 +1,3 @@
-const {
-  session
-} = require('electron');
 const notification = require('./notification/notification')
 
 const getTrack = `
@@ -42,12 +39,8 @@ const getImg = `
 `;
 
 exports.init = (win) => {
-  session.defaultSession.webRequest.onBeforeRequest(['*'], (details, callback) => {
-    if (/start\?__t/.test(details.url)) {
-      setTimeout(sendNotifi, 1000)
-    }
-    callback(details);
-  })
+
+  return sendNotifi
 
   function sendNotifi() {
     Promise.all([getInfoFromDOM(getTrack), getInfoFromDOM(getArtist), getInfoFromDOM(getImg)]).then((v) => {

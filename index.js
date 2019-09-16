@@ -3,6 +3,7 @@ const fs = require('mz/fs');
 const {
   app,
   BrowserWindow,
+  session
 } = require('electron');
 const store = require('./modules/store/store');
 const ctxMenu = require('./modules/menu/ctxMenu');
@@ -111,10 +112,22 @@ app.on("ready", () => {
     win.show();
   })
 
-  // Skip advertising
-  skipAdvert.init();
-  // Notification for next sing
-  notifiNextSing.init(win);
+  let sendNotifi = notifiNextSing.init(win);
+
+  session.defaultSession.webRequest.onBeforeRequest(['*'], (details, callback) => {
+    // Skip advertising
+    if (/awaps.yandex.net/.test(details.url) || /vh-bsvideo-converted/.test(details.url) || /get-video-an/.test(details.url)) {
+      return {
+        cancel: true
+      }
+    }
+    // Notification for next sing
+    if (/start\?__t/.test(details.url)) {
+      setTimeout(sendNotifi, 1000)
+    }
+
+    callback(details);
+  })
 })
 
 app.on('before-quit', () => {

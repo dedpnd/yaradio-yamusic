@@ -10,7 +10,7 @@
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
         "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
         "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
-        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --appBundleId=yaMusic --appCategoryType=public.app-category.music --ignore=distr",
+        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --app-bundle-id=yaMusic --app-category-type=public.app-category.music --ignore=distr",
         "gen:changelog": "github_changelog_generator -u dedpnd -p yaradio-yamusic"
     },
     "repository": {
