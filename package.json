@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "start": "electron .",
-        "s:dev": "SET NODE_ENV=dev&&electron .",
+        "s:dev": "set NODE_ENV=dev&&electron .",
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
         "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
         "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
@@ -34,12 +34,12 @@
     },
     "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
     "dependencies": {
-        "electron": "^4.0.8",
+        "electron": "^4.2.10",
         "electron-context-menu": "^0.11.0",
-        "electron-debug": "^2.1.0",
+        "electron-debug": "^2.2.0",
         "electron-store": "^2.0.0",
         "mz": "^2.7.0",
-        "node-notifier": "^5.4.0",
+        "node-notifier": "^5.4.3",
         "request": "^2.88.0",
         "request-promise": "^4.2.4"
     },
