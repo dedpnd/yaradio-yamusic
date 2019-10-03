@@ -1,7 +1,7 @@
 # Yandex Radio <img src="media/icon/yaradio.png" width="32"> and Yandex Music <img src="media/icon/yamusic.png" width="32">
 
 > Desktop app for [Yandex Radio](https://radio.yandex.ru/) and [Yandex Music](https://music.yandex.ru/).  
-> Skips ads when possible!  
+> Skips ads when is possible!  
 > Thank you for choosing my app :relaxed:  
 
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
