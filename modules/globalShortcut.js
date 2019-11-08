@@ -1,4 +1,5 @@
 const {
+  app,
   globalShortcut
 } = require('electron');
 
@@ -18,6 +19,10 @@ function shortcutTpl(win) {
     {
       accelerator: 'VolumeMute',
       func: () => win.send('mute'),
+    },
+    {
+      accelerator: "CmdOrCtrl+Q",
+      func: () => app.quit(),
     },
   ]
 }

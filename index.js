@@ -25,7 +25,7 @@ if (!appRunning) {
 
 app.on('second-instance', () => {
   if (win) {
-    if (win.isMinimized()) {
+    if (win.isMinimized() || !win.isVisible()) {
       win.restore();
     }
     win.focus();
