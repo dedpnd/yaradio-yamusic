@@ -105,7 +105,9 @@ app.on("ready", () => {
   ctxMenu.create(win, app);
   globalShortcut.init(win, app);
   win.setMenu(null);
+
   let page = win.webContents;
+
   page.on('dom-ready', () => {
     page.insertCSS(fs.readFileSync(path.join(__dirname, '/modules/css', 'css.css'), 'utf8'));
     win.show();
@@ -113,7 +115,7 @@ app.on("ready", () => {
 
   let sendNotifi = notifiNextSing.init(win);
 
-  session.defaultSession.webRequest.onBeforeRequest(['*'], (details, callback) => {
+  session.defaultSession.webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details, callback) => {
     // Skip advertising
     if (/awaps.yandex.net/.test(details.url) || /vh-bsvideo-converted/.test(details.url) || /get-video-an/.test(details.url)) {
       return {

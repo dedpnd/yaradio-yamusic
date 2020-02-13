@@ -4,6 +4,7 @@ const notification = require('../notification/notification');
 const { Menu, Tray } = require('electron');
 
 const iconPath = path.join(__dirname, '../../', 'media/icon', 'yaradio_16x16.png');
+let appIcon = null;
 
 function ctxTpl(win, app) {
 	return [
@@ -68,19 +69,12 @@ function toggleWindowVisibility(win) {
 }
 
 exports.create = (win, app) => {
-
 	const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
 
-	const appIcon = new Tray(iconPath);
-
+	appIcon = new Tray(iconPath);
 	appIcon.setContextMenu(ctxMenu);
 	appIcon.addListener('click', (e) => {
 		e.preventDefault();
 		toggleWindowVisibility(win);
 	})
-
-	win.on('show', function () {
-		appIcon.setHighlightMode('always')
-	})
-
 }
