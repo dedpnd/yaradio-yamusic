@@ -1,4 +1,4 @@
-import notification from './notification/notification'
+import notification from './notification'
 import { BrowserWindow } from 'electron';
 
 const _GetTrack = `

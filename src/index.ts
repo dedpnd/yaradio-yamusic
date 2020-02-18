@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'mz/fs';
 import { app, BrowserWindow, session } from 'electron';
-import store from './modules/store/store';
-import ctxMenu from './modules/menu/ctxMenu';
+import store from './modules/store';
+import ctxMenu from './modules/menu';
 import globalShortcut from './modules/globalShortcut';
 import notifiNextSing from './modules/notifiNextSong';
 

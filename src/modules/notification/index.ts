@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as notifier from 'node-notifier';
-import store from '../store/store';
+import store from '../store';
 import * as rp from 'request-promise';
 import * as fs from 'mz/fs';
 

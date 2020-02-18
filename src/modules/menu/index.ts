@@ -1,6 +1,6 @@
 import * as path from 'path';
-import store from '../store/store';
-import notification from '../notification/notification';
+import store from '../store';
+import notification from '../notification';
 import { IpcRenderer, BrowserWindow, Menu, Tray, App } from 'electron';
 
 const iconPath = path.join(__dirname, '../../../', 'media/icon', 'yaradio_16x16.png');
