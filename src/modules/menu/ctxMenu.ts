@@ -1,12 +1,14 @@
-const path = require('path');
-const store = require('../store/store');
-const notification = require('../notification/notification');
-const { Menu, Tray } = require('electron');
+import * as path from 'path';
+import store from '../store/store';
+import notification from '../notification/notification';
+import { IpcRenderer, BrowserWindow, Menu, Tray, App } from 'electron';
 
-const iconPath = path.join(__dirname, '../../', 'media/icon', 'yaradio_16x16.png');
+const iconPath = path.join(__dirname, '../../../', 'media/icon', 'yaradio_16x16.png');
 let appIcon = null;
 
-function ctxTpl(win, app) {
+function getCtxTpl(win: IpcRenderer & BrowserWindow, app: App): any {
+	const _SettingsNotifications = store.get('settings').notifications;
+
 	return [
 		{
 			label: 'Play | Pause',
@@ -42,12 +44,12 @@ function ctxTpl(win, app) {
 			submenu: [{
 				type: 'checkbox',
 				label: 'Notification',
-				checked: store.get('settings.notifications'),
+				checked: _SettingsNotifications,
 				click: () => {
-					let value = !store.get('settings.notifications');
-					notification.notifi('Settings', value ? 'Notification enabled' : 'Notification disabled', null, true);
+					let value = !store.get('settings').notifications;
 
-					store.set('settings.notifications', value);
+					notification('Settings', value ? 'Notification enabled' : 'Notification disabled', null, true);
+					store.set('settings', { notifications: value });
 				}
 			}]
 		},
@@ -60,7 +62,7 @@ function ctxTpl(win, app) {
 	]
 }
 
-function toggleWindowVisibility(win) {
+function toggleWindowVisibility(win: BrowserWindow) {
 	if (win.isVisible()) {
 		win.hide();
 	} else {
@@ -68,11 +70,13 @@ function toggleWindowVisibility(win) {
 	}
 }
 
-exports.create = (win, app) => {
-	const ctxMenu = Menu.buildFromTemplate(ctxTpl(win, app));
+export default (win: BrowserWindow, app: App) => {
+	const ctxTpl = getCtxTpl(win as IpcRenderer & BrowserWindow, app)
+	const ctxMenu = Menu.buildFromTemplate(ctxTpl);
 
 	appIcon = new Tray(iconPath);
 	appIcon.setContextMenu(ctxMenu);
+
 	appIcon.addListener('click', (e) => {
 		e.preventDefault();
 		toggleWindowVisibility(win);

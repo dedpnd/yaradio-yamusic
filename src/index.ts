@@ -1,22 +1,23 @@
-const path = require('path');
-const fs = require('mz/fs');
-const {
-  app,
-  BrowserWindow,
-  session
-} = require('electron');
-const store = require('./modules/store/store');
-const ctxMenu = require('./modules/menu/ctxMenu');
-const globalShortcut = require('./modules/globalShortcut');
-const notifiNextSing = require('./modules/notifiNextSing');
+import * as path from 'path';
+import * as fs from 'mz/fs';
+import { app, BrowserWindow, session } from 'electron';
+import store from './modules/store/store';
+import ctxMenu from './modules/menu/ctxMenu';
+import globalShortcut from './modules/globalShortcut';
+import notifiNextSing from './modules/notifiNextSong';
 
-if (process.env.node_env == 'dev')
+// For development
+if (process.env.node_env == 'dev') {
   require('electron-debug')({
     enabled: true,
     showDevTools: 'undocked'
   });
+}
 
-let win;
+const _defaultHeight = 700;
+const _defaultWidth = 848;
+
+let win: BrowserWindow | null = null;
 let appRunning = app.requestSingleInstanceLock();
 
 if (!appRunning) {
@@ -33,28 +34,29 @@ app.on('second-instance', () => {
 })
 
 function createWindow() {
-  const lastWindowState = store.get('lastWindowState'),
-    lastApp = store.get('lastApp');
+  const lastWindowState = store.get('lastWindowState');
+  const lastApp = store.get('lastApp');
 
   const win = new BrowserWindow({
     title: 'YaRadio',
     show: false,
-    x: lastWindowState.x,
-    y: lastWindowState.y,
-    height: lastWindowState.height || 700,
-    width: lastWindowState.width || 848,
+    x: lastWindowState ? lastWindowState.x : 0,
+    y: lastWindowState ? lastWindowState.y : 0,
+    height: lastWindowState ? lastWindowState.height : _defaultHeight,
+    width: lastWindowState ? lastWindowState.width : _defaultWidth,
     icon: path.join(__dirname, 'media/icon', 'yaradio.png'),
     titleBarStyle: 'hiddenInset',
-    minHeight: 700,
-    minWidth: 848,
+    minHeight: _defaultHeight,
+    minWidth: _defaultWidth,
     autoHideMenuBar: true,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff', // check this
     webPreferences: {
-      preload: path.join(__dirname, 'modules/js', 'browser.js'),
+      preload: path.join(__dirname, './modules/browser/js', 'browser.js'),
       nodeIntegration: false,
       plugins: true
     }
-  })
+  });
+
   win.loadURL((() => {
     if (lastApp == 'YaMusic') {
       return 'https://music.yandex.ru/'
@@ -63,6 +65,7 @@ function createWindow() {
   })());
 
   win.on('close', e => {
+
     if (!store.get('quit?')) {
       e.preventDefault();
     }
@@ -81,19 +84,23 @@ function createWindow() {
     }
   });
 
-  win.on('page-title-updated', e => {
+  win.on('page-title-updated', (e: any) => {
     let history = e.sender.webContents.history;
+
     if (/radio/.test(history[history.length - 1])) {
       win.setTitle('YaRadio');
+
       if (process.platform !== 'darwin') {
-        win.setIcon(path.join(__dirname, 'media/icon', 'yaradio_32x32.png'));
+        win.setIcon(path.join(__dirname, '../media/icon', 'yaradio_32x32.png'));
       }
     } else {
       win.setTitle('YaMusic');
+
       if (process.platform !== 'darwin') {
-        win.setIcon(path.join(__dirname, 'media/icon', 'yamusic_32x32.png'));
+        win.setIcon(path.join(__dirname, '../media/icon', 'yamusic_32x32.png'));
       }
     }
+
     e.preventDefault();
   });
 
@@ -101,19 +108,25 @@ function createWindow() {
 }
 
 app.on("ready", () => {
-  win = createWindow()
-  ctxMenu.create(win, app);
-  globalShortcut.init(win, app);
+  win = createWindow();
+
+  ctxMenu(win, app);
+  globalShortcut(win, app);
   win.setMenu(null);
 
   let page = win.webContents;
 
   page.on('dom-ready', () => {
-    page.insertCSS(fs.readFileSync(path.join(__dirname, '/modules/css', 'css.css'), 'utf8'));
-    win.show();
+    const cssFile = fs.readFileSync(path.join(__dirname, '/modules/browser/css', 'css.css'), 'utf8');
+
+    page.insertCSS(cssFile);
+
+    if (win) {
+      win.show();
+    }
   })
 
-  let sendNotifi = notifiNextSing.init(win);
+  let sendNotifi = notifiNextSing(win);
 
   session.defaultSession.webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details, callback) => {
     // Skip advertising
@@ -127,16 +140,18 @@ app.on("ready", () => {
       setTimeout(sendNotifi, 1000)
     }
 
-    callback(details);
+    callback({});
   })
 })
 
 app.on('before-quit', () => {
   store.set('quit?', true);
 
-  if (!win.isFullScreen()) {
-    store.set('lastWindowState', win.getBounds());
-  }
+  if (win) {
+    if (!win.isFullScreen()) {
+      store.set('lastWindowState', win.getBounds());
+    }
 
-  store.set('lastApp', win.getTitle());
+    store.set('lastApp', win.getTitle());
+  }
 });

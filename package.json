@@ -3,10 +3,13 @@
     "productName": "Yandex.Music.App",
     "version": "0.3.6",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "electron .",
-        "s:dev": "set NODE_ENV=dev&&electron .",
+        "s:dev": "set NODE_ENV=dev&& npm run ts:build && electron .",
+        "ts:build": "npm run dist:rm && tsc && npm run dist:copy",
+        "dist:rm": "rimraf dist",
+        "dist:copy": "copyfiles -u 2 src\\modules\\browser\\** dist\\modules",
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
         "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
         "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
@@ -44,8 +47,13 @@
         "request-promise": "^4.2.5"
     },
     "devDependencies": {
+        "@types/mz": "^2.7.0",
+        "@types/node-notifier": "^5.4.0",
+        "@types/request-promise": "^4.1.45",
+        "copyfiles": "^2.2.0",
         "cross-var": "^1.1.0",
         "electron-packager": "^14.2.1",
+        "rimraf": "^3.0.2",
         "tslint": "^6.0.0",
         "typescript": "^3.7.5"
     }
