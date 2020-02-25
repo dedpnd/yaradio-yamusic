@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import notification from './notification'
 import { BrowserWindow } from 'electron';
 
@@ -40,8 +41,12 @@ const _GetImg = `
 `;
 
 export default (win: BrowserWindow) => {
-
-  return sendNotifi
+  async function getInfoFromDOM(command: string) {
+    const checkData = async () => {
+      return await win.webContents.executeJavaScript(command);
+    }
+    return await checkData()
+  }
 
   function sendNotifi() {
     Promise.all([getInfoFromDOM(_GetTrack), getInfoFromDOM(_GetArtist), getInfoFromDOM(_GetImg)]).then((v) => {
@@ -51,12 +56,7 @@ export default (win: BrowserWindow) => {
     })
   }
 
-  async function getInfoFromDOM(command: string) {
-    let checkData = async () => {
-      return await win.webContents.executeJavaScript(command);
-    }
-    return await checkData()
-  }
+  return sendNotifi
 }
 
 // Util

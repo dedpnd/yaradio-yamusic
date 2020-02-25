@@ -46,7 +46,7 @@ function getCtxTpl(win: IpcRenderer & BrowserWindow, app: App): any {
 				label: 'Notification',
 				checked: _SettingsNotifications,
 				click: () => {
-					let value = !store.get('settings').notifications;
+					const value = !store.get('settings').notifications;
 
 					notification('Settings', value ? 'Notification enabled' : 'Notification disabled', null, true);
 					store.set('settings', { notifications: value });

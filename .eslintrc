@@ -1,15 +1,29 @@
 {
-    "extends": ["eslint:recommended"],
+    "extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parser": "@typescript-eslint/parser",
     "rules": {
-        "no-console": 0
+        "no-console": 0,
+        "@typescript-eslint/interface-name-prefix": ["error", { "prefixWithI": "always" }],
+        "@typescript-eslint/no-var-requires": ["off"],
+        "@typescript-eslint/explicit-function-return-type": ["off"],
+        "@typescript-eslint/no-use-before-define": ["off"]
     },
     "parserOptions": {
-        "ecmaVersion": 8
+        "project": "tsconfig.json",
+        "ecmaVersion": 8,        
+		"tsconfigRootDir": "."
     },
+    "plugins": ["@typescript-eslint"],
     "env": {
         "jquery": true,
         "browser": true,
         "node": true,
-        "es6": true
+        "es6": true,
+        "es2017": true
     }
 }

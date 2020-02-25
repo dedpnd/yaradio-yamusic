@@ -7,7 +7,7 @@ import * as fs from 'mz/fs';
 export default async (title: string, msg: string, img: string | null, force?: boolean) => {
   const _SettingsNotifications = store.get('settings').notifications;
 
-  let sendNotify = function () {
+  const sendNotify = function () {
     notifier.notify({
       title: title || 'YaRadio',
       message: msg || '-',
@@ -23,7 +23,7 @@ export default async (title: string, msg: string, img: string | null, force?: bo
 
   if (_SettingsNotifications) {
     if (img) {
-      let dataImg = await rp.get(img, { encoding: 'binary' }).catch((err) => {
+      const dataImg = await rp.get(img, { encoding: 'binary' }).catch((err) => {
         console.log('Error: Notifier', err);
       })
 
