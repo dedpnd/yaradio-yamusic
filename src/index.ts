@@ -7,7 +7,7 @@ import globalShortcut from './modules/globalShortcut';
 import notifiNextSing from './modules/notifiNextSong';
 
 // For development
-if (process.env.node_env == 'dev') {
+if (process.env.node_env == 'dev') {  
   require('electron-debug')({
     enabled: true,
     showDevTools: 'undocked'
@@ -18,7 +18,7 @@ const _defaultHeight = 700;
 const _defaultWidth = 848;
 
 let win: BrowserWindow | null = null;
-let appRunning = app.requestSingleInstanceLock();
+const appRunning = app.requestSingleInstanceLock();
 
 if (!appRunning) {
   app.quit();
@@ -33,7 +33,7 @@ app.on('second-instance', () => {
   }
 })
 
-function createWindow() {
+function createWindow(): BrowserWindow {
   const lastWindowState = store.get('lastWindowState');
   const lastApp = store.get('lastApp');
 
@@ -57,7 +57,7 @@ function createWindow() {
     }
   });
 
-  win.loadURL((() => {
+  win.loadURL(((): string => {
     if (lastApp == 'YaMusic') {
       return 'https://music.yandex.ru/'
     }
@@ -85,9 +85,9 @@ function createWindow() {
   });
 
   win.on('page-title-updated', (e: any) => {
-    let history = e.sender.webContents.history;
+    const history = e.sender.webContents.history;
 
-    if (/radio/.test(history[history.length - 1])) {
+    if (history[history.length - 1].includes("radio")) {
       win.setTitle('YaRadio');
 
       if (process.platform !== 'darwin') {
@@ -114,7 +114,7 @@ app.on("ready", () => {
   globalShortcut(win, app);
   win.setMenu(null);
 
-  let page = win.webContents;
+  const page = win.webContents;
 
   page.on('dom-ready', () => {
     const cssFile = fs.readFileSync(path.join(__dirname, '/modules/browser/css', 'css.css'), 'utf8');
@@ -126,17 +126,17 @@ app.on("ready", () => {
     }
   })
 
-  let sendNotifi = notifiNextSing(win);
+  const sendNotifi = notifiNextSing(win);
 
   session.defaultSession.webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details, callback) => {
     // Skip advertising
-    if (/awaps.yandex.net/.test(details.url) || /vh-bsvideo-converted/.test(details.url) || /get-video-an/.test(details.url)) {
+    if (details.url.includes("awaps.yandex.net") || details.url.includes("vh-bsvideo-converted") || details.url.includes("get-video-an")) {
       return {
         cancel: true
       }
     }
     // Notification for next sing
-    if (/start\?__t/.test(details.url)) {
+    if (details.url.includes("start?__t")) {
       setTimeout(sendNotifi, 1000)
     }
 

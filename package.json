@@ -50,11 +50,13 @@
         "@types/mz": "^2.7.0",
         "@types/node-notifier": "^5.4.0",
         "@types/request-promise": "^4.1.45",
+        "@typescript-eslint/eslint-plugin": "^2.21.0",
+        "@typescript-eslint/parser": "^2.21.0",
         "copyfiles": "^2.2.0",
         "cross-var": "^1.1.0",
         "electron-packager": "^14.2.1",
+        "eslint": "^6.8.0",
         "rimraf": "^3.0.2",
-        "tslint": "^6.0.0",
         "typescript": "^3.7.5"
     }
 }
