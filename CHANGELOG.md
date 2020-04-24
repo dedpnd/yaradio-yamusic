@@ -1,12 +1,17 @@
 # Change Log
 
-## [Unreleased](https://github.com/dedpnd/yaradio-yamusic/tree/HEAD)
-
-[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.6...HEAD)
+## [v.0.4.0](https://github.com/dedpnd/yaradio-yamusic/tree/v.0.4.0) (2020-04-23)
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.6...v.0.4.0)
 
 **Fixed bugs:**
 
+- Application not running in mac os mojave 10.14.6 in v.0.3.6 [\#10](https://github.com/dedpnd/yaradio-yamusic/issues/10)
 - Cannot open on macOs 10.14.6 [\#5](https://github.com/dedpnd/yaradio-yamusic/issues/5)
+
+**Closed issues:**
+
+- Yandex blocked the app? [\#13](https://github.com/dedpnd/yaradio-yamusic/issues/13)
+- Setting to specify where to show next song popup [\#8](https://github.com/dedpnd/yaradio-yamusic/issues/8)
 
 ## [v.0.3.6](https://github.com/dedpnd/yaradio-yamusic/tree/v.0.3.6) (2019-09-16)
 [Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.3.5...v.0.3.6)

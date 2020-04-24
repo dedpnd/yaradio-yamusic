@@ -1,19 +1,20 @@
 {
     "name": "yaradio-yamusic",
     "productName": "Yandex.Music.App",
-    "version": "0.3.6",
+    "version": "0.4.0",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
-    "main": "dist/index.js",
+    "main": "public/index.js",
     "scripts": {
-        "start": "electron .",
+        "start": "electron .\\public\\.",
         "s:dev": "set NODE_ENV=dev&& npm run ts:build && electron .",
-        "ts:build": "npm run dist:rm && tsc && npm run dist:copy",
-        "dist:rm": "rimraf dist",
-        "dist:copy": "copyfiles -u 2 src\\modules\\browser\\** dist\\modules",
+        "ts:build": "npm run public:rm && tsc && npm run public:copy",
+        "public:rm": "rimraf public",
+        "public:copy": "copyfiles -u 2 src\\modules\\browser\\** public\\modules",
+        "prebuild": " npm run ts:build",
         "build:all": "npm run build:win && npm run build:linux && npm run build:mac",
-        "build:win": "electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=distr",
-        "build:linux": "electron-packager . --platform=linux --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=distr",
-        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --app-bundle-id=yaMusic --app-category-type=public.app-category.music --ignore=distr",
+        "build:win": " electron-packager . --platform=win32 --arch=all --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/win --overwrite=true --ignore=src --ignore=distr",
+        "build:linux": "electron-packager . --platform=linux --arch=x64 --arch=arm64 --arch=armv7l --icon=media/icon/yaradio_64x64.ico --name=yaMusic --executableName=yaMusic --out=distr/linux --overwrite=true --ignore=src --ignore=distr",
+        "build:mac": "electron-packager . --platform=darwin --arch=all --icon=media/icon/yaradio_64x64.icns --name=yaMusic --executableName=yaMusic --out=distr/mac --overwrite=true --app-bundle-id=yaMusic --app-category-type=public.app-category.music --ignore=src --ignore=distr",
         "gen:changelog": "github_changelog_generator -u dedpnd -p yaradio-yamusic"
     },
     "repository": {
@@ -36,10 +37,9 @@
         "url": "https://github.com/dedpnd/yaradio-yamusic/issues"
     },
     "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
-    "dependencies": {
-        "electron": "^8.0.0",
-        "electron-context-menu": "^0.16.0",
-        "electron-debug": "^3.0.1",
+    "dependencies": {      
+        "electron": "^8.0.0",  
+        "electron-context-menu": "^0.16.0",        
         "electron-store": "^5.1.0",
         "mz": "^2.7.0",
         "node-notifier": "^6.0.0",
@@ -53,7 +53,8 @@
         "@typescript-eslint/eslint-plugin": "^2.21.0",
         "@typescript-eslint/parser": "^2.21.0",
         "copyfiles": "^2.2.0",
-        "cross-var": "^1.1.0",
+        "cross-var": "^1.1.0",        
+        "electron-debug": "^3.0.1",
         "electron-packager": "^14.2.1",
         "eslint": "^6.8.0",
         "rimraf": "^3.0.2",
