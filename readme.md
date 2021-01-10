@@ -1,7 +1,8 @@
-# Yandex Radio <img src="media/icon/yaradio.png" width="32"> and Yandex Music <img src="media/icon/yamusic.png" width="32">
+# Yandex Radio <img src="src/media/yaradio.png" width="32"> and Yandex Music <img src="src/media/yamusic.png" width="32">
 
 > Desktop app for [Yandex Radio](https://radio.yandex.ru/) and [Yandex Music](https://music.yandex.ru/).  
 > Skips ads when is possible!  
+> Ability to work through a proxy.  
 > Thank you for choosing my app :relaxed:  
 
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
@@ -21,13 +22,7 @@
 ---
 
 ## Installation
-###### Windows & Linux 
-Unpack the archive to any convenient location.  
-
-###### Mac
-Unpack the archive, move to the `/Applications` directory.  
-
----
+Select the package and install it.  
 
 ## Download  
 |  Windows |  Linux | Mac  |
@@ -40,35 +35,18 @@ Unpack the archive, move to the `/Applications` directory.
 ---
 
 ## Usage  
-> Start app 
+> Start app in dev mode
 ```
-npm run start
+npm run electron:serve
 ```
-> Start app by electromon  
+> Build app 
 ```
-npm run s:dev
+npm run electron:build
 ```
-> Build for all platform
-```
-npm run build:all
-```
-> Build for Windows
-```
-npm run build:win
-```
-> Build for Linux
-```
-npm run build:linux
-```
-> Build for Mac
-```
-npm run build:mac
-```
-
 ---
 
 ## Documentation
-Learn more about supporting [platforms](https://github.com/electron/electron/blob/master/docs/tutorial/support.md#supported-platforms)  
+Learn more about supporting [platforms](https://www.electron.build/)  
 
 ---
 
