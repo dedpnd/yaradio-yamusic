@@ -17,6 +17,7 @@ module.exports = {
         electronBuilder: {
             nodeIntegration: true,
             builderOptions: {
+                "publish": ['github'],
                 "productName": "YaMusic.app",
                 "appId": "com.github.dedpnd.yamusic",
                 "win": {

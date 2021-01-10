@@ -2,6 +2,7 @@
 
 import * as path from 'path';
 import { app, protocol, session, BrowserWindow } from "electron";
+import { autoUpdater } from "electron-updater"
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 
@@ -71,6 +72,7 @@ async function createWindow() {
     createProtocol("app");
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
+    autoUpdater.checkForUpdatesAndNotify();
   }
 
   win.on('close', e => {
