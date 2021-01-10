@@ -28,7 +28,7 @@
 ---
 
 ## Installation
-Choose a package that is suitable for your OS and install it.  
+Choose a package that is suitable for your OS and install.  
 
 ## Download  
 |  Windows |  Linux | Mac  |
