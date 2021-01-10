@@ -11,6 +11,7 @@
 > Уведомления при смене трека.  
 > По возможности блокирует рекламу.  
 > Спасибо, что выбрали мое приложение :relaxed:  
+
  &nbsp;  
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dedpnd/yaradio-yamusic.svg)
