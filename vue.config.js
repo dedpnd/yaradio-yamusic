@@ -38,7 +38,7 @@ module.exports = {
                         "AppImage",
                         "deb"
                     ],
-                    "icon": "./build/icons/256x256.ico"
+                    "icon": "./build/icons/256x256.png"
                 }
             }
         },
