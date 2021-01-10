@@ -33,10 +33,10 @@ Choose a package that is suitable for your OS and install it.
 ## Download  
 |  Windows |  Linux | Mac  |
 | ------------ | ------------ | ------------ |
-| [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-win32-x64.zip)    | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-linux-x64.zip) | [Download - **x64**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-darwin-x64.7z) |
-| [Download - **ia32**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-win32-ia32.zip)   | [Download - **ia32** (v.0.3.3)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v.0.3.3/Yandex.Music.App-linux-ia32.zip) |   |
-|   | [Download - **arm64**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-linux-arm64.zip)  |   |
-|   | [Download - **armv7l**](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/Yandex.Music.App-linux-armv7l.zip) |   | |
+| [Download - (**exe**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-Setup-1.0.0.exe)    | [Download - (**AppImage**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-1.0.0.AppImage) | [Download - (**dmg**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-1.0.0.dmg) |
+|   | [Download - (**deb**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/yaradio-yamusic_1.0.0_amd64.deb) |   |
+|   |   |   |
+|   |   |   | |
 
 ---
 
