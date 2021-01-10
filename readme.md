@@ -11,7 +11,7 @@
 > Уведомления при смене трека.  
 > По возможности блокирует рекламу.  
 > Спасибо, что выбрали мое приложение :relaxed:  
-
+ &nbsp;  
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dedpnd/yaradio-yamusic.svg)
 ![GitHub issues](https://img.shields.io/github/issues/dedpnd/yaradio-yamusic.svg)
@@ -19,8 +19,6 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/dedpnd/yaradio-yamusic.svg)
 ![GitHub All Releases](https://img.shields.io/github/downloads/dedpnd/yaradio-yamusic/total.svg)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/dedpnd/yaradio-yamusic/electron.svg)
-
- &nbsp;  
 
 <p align="center">
 	<img src=".github/example.gif" width="75%">
