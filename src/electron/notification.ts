@@ -18,7 +18,7 @@ async function invoke(title: string, msg: string, img: string) {
   
   try {
     if (img) {
-      const pathToFile = path.join(__dirname, '100x100.jpeg');
+      const pathToFile = path.join(__dirname, '../', '100x100.jpeg');
       const resImg = await fetch("http://" + img.replace("%%", "100x100"));
       await fs.promises.writeFile(pathToFile, await resImg.buffer(), { encoding: 'binary' });
       imgFile = pathToFile;
