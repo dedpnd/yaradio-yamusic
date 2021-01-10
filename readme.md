@@ -4,6 +4,11 @@
 > Skips ads when is possible!  
 > Ability to work through a proxy.  
 > Thank you for choosing my app :relaxed:  
+-----------------------------------------  
+> Неофициальное декстопное приложение «Яндекс Радио» и «Яндекс Музыка» для всех платформ.   
+> Работает через любой прокси.   
+> По возможности блокирует рекламу.  
+> Спасибо, что выбрали мое приложение :relaxed:  
 
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dedpnd/yaradio-yamusic.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/dedpnd/yaradio-yamusic.svg)
@@ -16,13 +21,13 @@
  &nbsp;  
 
 <p align="center">
-	<img src="media/md/example.gif" width="75%">
+	<img src=".github/example.gif" width="75%">
 </p>
 
 ---
 
 ## Installation
-Select the package and install it.  
+Choose a package that is suitable for your OS and install it.  
 
 ## Download  
 |  Windows |  Linux | Mac  |
@@ -51,7 +56,6 @@ Learn more about supporting [platforms](https://www.electron.build/)
 ---
 
 ## Related
-- [yam](https://github.com/artemeff/yam) - Yet Another Music Player / Yandex.Music Desktop Client  
 - [yaradio](https://github.com/maxvipon/yaradio) - Yandex.Radio Unofficial Desktop app  
 
 ---
@@ -61,4 +65,4 @@ Learn more about supporting [platforms](https://www.electron.build/)
 ![GitHub](https://img.shields.io/github/license/dedpnd/yaradio-yamusic.svg)  
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2019 © <a href="https://github.com/dedpnd" target="_blank">dedpnd</a>.
+- Copyright 2019-2021 © <a href="https://github.com/dedpnd" target="_blank">dedpnd</a>.
