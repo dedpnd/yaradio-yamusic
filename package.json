@@ -18,7 +18,7 @@
         "type": "git",
         "url": "git+https://github.com/dedpnd/yaradio-yamusic.git"
     },
-    "author": "dedpnd",
+    "author": "dedpnd <dedpnd@example.com>",
     "license": "MIT",
     "keyword": [
         "electron",
