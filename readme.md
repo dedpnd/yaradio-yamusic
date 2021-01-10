@@ -35,8 +35,8 @@ Choose a package that is suitable for your OS and install it.
 | ------------ | ------------ | ------------ |
 | [Download - (**exe**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-Setup-1.0.0.exe)    | [Download - (**AppImage**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-1.0.0.AppImage) | [Download - (**dmg**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/YaMusic.app-1.0.0.dmg) |
 |   | [Download - (**deb**)](https://github.com/dedpnd/yaradio-yamusic/releases/download/v1.0.0/yaradio-yamusic_1.0.0_amd64.deb) |   |
-|   |   |   |
-|   |   |   | |
+
+
 
 ---
 
