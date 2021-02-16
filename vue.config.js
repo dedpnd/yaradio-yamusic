@@ -34,7 +34,6 @@ module.exports = {
                     "icon": "./build/icons/icon.icns"
                 },
                 "linux": {
-                    "name": "${productName}",
                     "category": "Audio",
                     "target": [
                         "AppImage",
