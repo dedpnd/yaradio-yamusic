@@ -13,8 +13,8 @@ import notification from './electron/notification';
 import proxy from './electron/proxy';
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-const _defaultHeight = 707;
-const _defaultWidth = 845;
+const _defaultHeight = 620;
+const _defaultWidth = 820;
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -134,7 +134,7 @@ app.on("ready", async () => {
   globalShortcut(win, app);
   await proxy();
 
-  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details, callback) => {
+  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details:any, callback) => {    
     if (details.url.includes("awaps.yandex.net") || details.url.includes("vh-bsvideo-converted") || details.url.includes("get-video-an")) {
       // Skip advertising
       return {
@@ -160,7 +160,14 @@ app.on('before-quit', () => {
   }
 });
 
-
+// app.on('web-contents-created', function (webContentsCreatedEvent, contents) {
+//   if (contents.getType() === 'webview') {
+//     contents.on('new-window', function (newWindowEvent, url) {      
+//       win?.loadURL(url)
+//       newWindowEvent.preventDefault();
+//     });
+//   }
+// });
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {

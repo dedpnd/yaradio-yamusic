@@ -1,9 +1,11 @@
-.DS_Store
-node_modules
-/dist
-/dist_electron
+# Notification [dev]
 /100x100.jpeg
 
+# Desktop Services Store
+.DS_Store
+
+# Node modules
+/node_modules
 
 # local env files
 .env.local
@@ -25,4 +27,5 @@ pnpm-debug.log*
 *.sw?
 
 #Electron-builder output
+/dist
 /dist_electron

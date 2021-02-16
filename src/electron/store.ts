@@ -8,6 +8,13 @@ interface StoreType {
       protocol: string | null;
       url: string | null;
     };
+    gs: {
+      play: boolean;
+      nextTrack: boolean;
+      prevTrack: boolean;
+      mute: boolean;
+      exit: boolean;
+    }
   };
   lastApp: string | null;
   lastWindowState: Rectangle | null;
@@ -21,6 +28,13 @@ const store = new Store({
       proxy: {
         protocol: null,
         url: null
+      },
+      gs: {
+        play: true,
+        nextTrack: true,
+        prevTrack: true,
+        mute: true,
+        exit: true
       }
     },
     lastApp: null,
