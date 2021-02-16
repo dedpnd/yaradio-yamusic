@@ -1,3 +1,5 @@
+// webpreferences="nativeWindowOpen=yes"
+
 <template>
   <div style="height: 100%">
     <webview
@@ -33,7 +35,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Home",
   data: () => ({
-    show: true
+    show: true,
   }),
   async mounted() {
     document.title = "YaMusic";
@@ -95,6 +97,6 @@ export default Vue.extend({
         }
       `);
     });
-  }
+  },
 });
 </script>

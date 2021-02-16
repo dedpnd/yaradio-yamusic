@@ -25,7 +25,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-dialog v-model="dialog" persistent max-width="600px" scrollable>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" @click="getStoreValue" text>
             <v-icon large>mdi-settings</v-icon>
@@ -35,7 +35,8 @@
           <v-card-title>
             <span class="headline">Settings</span>
           </v-card-title>
-          <v-card-text>
+          <v-divider></v-divider>
+          <v-card-text style="height: 360px">
             <v-container>
               <v-row>
                 <v-col cols="12">
@@ -70,6 +71,40 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
+                </v-col>
+                <v-col cols="12">
+                  <div class="label-box">
+                    <label>Key shortcut</label>
+                  </div>
+                  <v-col>
+                    <v-row>
+                      <v-checkbox
+                        v-model="gsPlay"
+                        label="Play | Pause"
+                        style="padding-right: 10px"
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="gsNextTrack"
+                        label="Next track"
+                        style="padding-right: 10px"
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="gsPrevTrack"
+                        label="Prev. track"
+                        style="padding-right: 10px"
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="gsMute"
+                        label="Mute"
+                        style="padding-right: 10px"
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="gsExit"
+                        label="Exit"
+                        style="padding-right: 10px"
+                      ></v-checkbox>
+                    </v-row>
+                  </v-col>
                 </v-col>
               </v-row>
             </v-container>
@@ -122,6 +157,9 @@ html {
   position: sticky;
   left: 100%;
 }
+.v-messages {
+  min-height: 0px im !important;
+}
 </style>
 
 <script lang="ts">
@@ -134,7 +172,7 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    Home
+    Home,
   },
 
   data: () => ({
@@ -142,7 +180,12 @@ export default Vue.extend({
     allowNotification: false,
     itemsProtocol: ["http", "https", "socks4", "socks5"],
     protocol: null as string | null,
-    url: null as string | null
+    url: null as string | null,
+    gsPlay: false,
+    gsNextTrack: false,
+    gsPrevTrack: false,
+    gsMute: false,
+    gsExit: false,
   }),
   mounted() {
     //
@@ -159,28 +202,49 @@ export default Vue.extend({
         this.protocol = settings.proxy.protocol;
         this.url = settings.proxy.url;
       }
+      if (settings.gs) {
+        this.gsPlay = settings.gs.play;
+        this.gsNextTrack = settings.gs.nextTrack;
+        this.gsPrevTrack = settings.gs.prevTrack;
+        this.gsMute = settings.gs.mute;
+        this.gsExit = settings.gs.exit;
+      }
     },
     close() {
       this.allowNotification = false;
       this.protocol = null;
       this.url = null;
       this.dialog = false;
+      this.gsPlay = false;
+      this.gsNextTrack = false;
+      this.gsPrevTrack = false;
+      this.gsMute = false;
+      this.gsExit = false;
     },
     clearProxy() {
       this.protocol = null;
       this.url = null;
     },
     save() {
-      store.set("settings.notifications", this.allowNotification);
-      store.set("settings.proxy", {
-        protocol: this.protocol,
-        url: this.url
+      store.set("settings", {
+        notifications: this.allowNotification,
+        proxy: {
+          protocol: this.protocol,
+          url: this.url,
+        },
+        gs: {
+          play: this.gsPlay,
+          nextTrack: this.gsNextTrack,
+          prevTrack: this.gsPrevTrack,
+          mute: this.gsMute,
+          exit: this.gsExit,
+        },
       });
 
       ipcRenderer.sendSync("SetProxy");
 
       this.dialog = false;
-    }
-  }
+    },
+  },
 });
 </script>

@@ -12,7 +12,8 @@
         "electron:serve": "vue-cli-service electron:serve",
         "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
         "postinstall": "electron-builder install-app-deps",
-        "postuninstall": "electron-builder install-app-deps"
+        "postuninstall": "electron-builder install-app-deps",
+        "gen:changelog": "docker run -it --rm -v docker:/usr/local/src/your-app ferrarimarco/github-changelog-generator -u dedpnd -p yaradio-yamusic"
     },
     "repository": {
         "type": "git",
@@ -28,6 +29,8 @@
         "yandex radio app",
         "yandex.radio.app",
         "electron music player",
+        "yamusic",
+        "yaradio",
         "Яндекс Музыка",
         "Яндекс Радио"
     ],
