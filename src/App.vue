@@ -185,7 +185,7 @@ export default Vue.extend({
     gsNextTrack: false,
     gsPrevTrack: false,
     gsMute: false,
-    gsExit: false,
+    gsExit: false
   }),
   mounted() {
     //
@@ -230,21 +230,21 @@ export default Vue.extend({
         notifications: this.allowNotification,
         proxy: {
           protocol: this.protocol,
-          url: this.url,
+          url: this.url
         },
         gs: {
           play: this.gsPlay,
           nextTrack: this.gsNextTrack,
           prevTrack: this.gsPrevTrack,
           mute: this.gsMute,
-          exit: this.gsExit,
-        },
+          exit: this.gsExit
+        }
       });
 
       ipcRenderer.sendSync("SetProxy");
 
       this.dialog = false;
-    },
-  },
+    }
+  }
 });
 </script>
