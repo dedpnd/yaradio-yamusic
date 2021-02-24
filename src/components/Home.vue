@@ -14,7 +14,7 @@ export default Vue.extend({
     //
   }),
   async mounted() {
-    async function exec(command: any) {
+    async function exec(command: string) {
       const webview: any = document.querySelector("webview");
 
       if (webview) {
@@ -50,15 +50,15 @@ export default Vue.extend({
 
     if (lastApp == "YaMusic") {
       if (this.$route.path !== "YaMusic")
-        this.$router.push({ name: "YaMusic" }).catch((err) => {
+        this.$router.push({ name: "YaMusic" }).catch(() => {
           /**/
         });
     } else {
       if (this.$route.path !== "YaRadio")
-        this.$router.push({ name: "YaRadio" }).catch((err) => {
+        this.$router.push({ name: "YaRadio" }).catch(() => {
           /**/
         });
     }
-  },
+  }
 });
 </script>
