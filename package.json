@@ -13,7 +13,7 @@
         "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
         "postinstall": "electron-builder install-app-deps",
         "postuninstall": "electron-builder install-app-deps",
-        "gen:changelog": "docker run -it --rm -v docker:/usr/local/src/your-app ferrarimarco/github-changelog-generator -u dedpnd -p yaradio-yamusic"
+        "gen:changelog": "docker run -it --rm --env-file gh-token.env -v docker:/usr/local/src/your-app ferrarimarco/github-changelog-generator -u dedpnd -p yaradio-yamusic"
     },
     "repository": {
         "type": "git",
@@ -23,11 +23,8 @@
     "license": "MIT",
     "keyword": [
         "electron",
-        "electron.app",
         "yandex music app",
-        "yandex.music.app",
         "yandex radio app",
-        "yandex.radio.app",
         "electron music player",
         "yamusic",
         "yaradio",

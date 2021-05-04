@@ -1,3 +1,41 @@
+# Changelog
+
+## [v1.0.3](https://github.com/dedpnd/yaradio-yamusic/tree/v1.0.3) (2021-05-04)
+
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v1.0.2...v1.0.3)
+
+**Implemented enhancements:**
+
+- Please add "go to home page" action on "Radio" and "Music" buttons [\#28](https://github.com/dedpnd/yaradio-yamusic/issues/28)
+
+**Fixed bugs:**
+
+- Application blocks side panel [\#43](https://github.com/dedpnd/yaradio-yamusic/issues/43)
+- Some office shortcuts keys does not works when YaMusic running [\#42](https://github.com/dedpnd/yaradio-yamusic/issues/42)
+- Unable to use bluetooth actions such as prev/next/start/stop functions [\#37](https://github.com/dedpnd/yaradio-yamusic/issues/37)
+- wrong icon path for deb package [\#32](https://github.com/dedpnd/yaradio-yamusic/issues/32)
+
+## [v1.0.2](https://github.com/dedpnd/yaradio-yamusic/tree/v1.0.2) (2021-02-24)
+
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v1.0.1...v1.0.2)
+
+**Implemented enhancements:**
+
+- Custom global HotKeys [\#29](https://github.com/dedpnd/yaradio-yamusic/issues/29)
+
+## [v1.0.1](https://github.com/dedpnd/yaradio-yamusic/tree/v1.0.1) (2021-02-16)
+
+[Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v1.0.0...v1.0.1)
+
+**Fixed bugs:**
+
+- issue with macOS 10.15.6 [\#23](https://github.com/dedpnd/yaradio-yamusic/issues/23)
+- Using the back/forward mouse click stops the song that is currently playing [\#14](https://github.com/dedpnd/yaradio-yamusic/issues/14)
+
+**Closed issues:**
+
+- Ctrl+Q hotkey is stopping app [\#30](https://github.com/dedpnd/yaradio-yamusic/issues/30)
+
 ## [v1.0.0](https://github.com/dedpnd/yaradio-yamusic/tree/v1.0.0) (2021-01-10)
 
 [Full Changelog](https://github.com/dedpnd/yaradio-yamusic/compare/v.0.4.0...v1.0.0)
