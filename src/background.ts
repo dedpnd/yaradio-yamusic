@@ -135,13 +135,11 @@ app.on("ready", async () => {
   await proxy();
 
   session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details: any, callback) => {
-    console.log("========================")
-    console.log(details.url)
-    if (details.url.includes("awaps.yandex.net") || 
-        details.url.includes("vh-bsvideo-converted") || 
-        details.url.includes("get-video-an") || 
-        details.url.includes("banners.adfox.ru") ||
-        details.url.includes("an.yandex.ru/vmap/")) {
+    if (details.url.includes("awaps.yandex.net") ||
+      details.url.includes("vh-bsvideo-converted") ||
+      details.url.includes("get-video-an") ||
+      details.url.includes("banners.adfox.ru") ||
+      details.url.includes("an.yandex.ru/vmap/")) {
       // Skip advertising
       return {
         cancel: true
