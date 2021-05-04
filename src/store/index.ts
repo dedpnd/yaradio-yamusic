@@ -8,8 +8,8 @@ export default new Vuex.Store({
     loading: false
   },
   mutations: {
-    loadingSetFalse: state => state.loading = false,
-    loadingSetTrue: state => state.loading = true
+    loadingSetFalse: state => (state.loading = false),
+    loadingSetTrue: state => (state.loading = true)
   },
   actions: {},
   modules: {}

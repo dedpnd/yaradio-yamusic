@@ -14,7 +14,7 @@ interface StoreType {
       prevTrack: boolean;
       mute: boolean;
       exit: boolean;
-    }
+    };
   };
   lastApp: string | null;
   lastWindowState: Rectangle | null;
@@ -46,14 +46,14 @@ const store = new Store({
 store.set("quit?", false);
 
 // #HotFix 1.0.1
-if (!store.get('settings.gs')) {
-  store.set('settings.gs', {
+if (!store.get("settings.gs")) {
+  store.set("settings.gs", {
     play: true,
     nextTrack: true,
     prevTrack: true,
     mute: true,
     exit: true
-  })
+  });
 }
 
 export default store as Store<StoreType>;
