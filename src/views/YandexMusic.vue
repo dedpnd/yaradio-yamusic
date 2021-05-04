@@ -31,6 +31,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Store from "../store";
 
 export default Vue.extend({
   name: "Home",
@@ -41,8 +42,11 @@ export default Vue.extend({
     document.title = "YaMusic";
     const webview: any = document.querySelector("webview");
 
+    Store.commit("loadingSetTrue");
+
     const loadstop = () => {
       this.show = false;
+      Store.commit("loadingSetFalse");
     };
 
     if (webview) {
@@ -50,8 +54,6 @@ export default Vue.extend({
     }
 
     webview.addEventListener("dom-ready", async () => {
-      // did-stop-loading may not work
-      loadstop();
       await webview.insertCSS(`              
         /* Overhead */
         .d-overhead {
@@ -72,12 +74,8 @@ export default Vue.extend({
           margin-bottom: 65px;
         }
 
-        div.centerblock-wrapper {
-          margin-right: 0px !important;
-        }
-
         /* Sidebar */
-        div.sidebar__placeholder {
+        div.sidebar__under, #brandingFrame {
           display: none !important;
         }
 
@@ -91,11 +89,60 @@ export default Vue.extend({
         div.footer-app-install {
           display: none !important;
         }
-
-        .centerblock-wrapper.deco-pane .footer {
-          display: none !important;
+        
+        /* Custom */
+        # CSS class dor div.centerblock-wrapper
+        .centerblock-wrapper__no_margin {
+          margin-right: 0px !important;
         }
       `);
+
+      // Hide sidebar
+      await webview.executeJavaScript(`
+      function hideSidebar(){
+        const centralBlockDOM = document.querySelector('div.centerblock-wrapper');
+        const sidebarDOM = document.querySelector('.sidebar');
+        
+        centralBlockDOM.style.marginRight = '0px';
+
+        const observer = new MutationObserver(function(mutations) {    
+          const trackSidebarDOM = document.querySelector('.sidebar-cont.sidebar-cont_shown.deco-pane'); 
+            
+          if (trackSidebarDOM) {
+              centralBlockDOM.style.marginRight = '';
+              observer.disconnect();
+          } else {
+              centralBlockDOM.style.marginRight = '0px';
+          }
+
+          setTimeout(startObserving,1000);
+        });
+
+        const startObserving = function() {
+            observer.observe(sidebarDOM, { 
+                childList: true,
+                subtree: true
+            });
+        }
+
+        startObserving();
+      }
+      
+      function innerRoute(location){
+        let tmpDom = document.createElement('a');
+        tmpDom.id = 'innerRoute'
+        tmpDom.setAttribute('href', location);
+        
+        document.body.appendChild(tmpDom);       
+        document.querySelector('#innerRoute').click();
+      }
+
+      // Init
+      hideSidebar();
+      `);
+
+      // did-stop-loading may not work
+      loadstop();
     });
   }
 });
