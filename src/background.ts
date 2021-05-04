@@ -134,8 +134,8 @@ app.on("ready", async () => {
   globalShortcut(win, app);
   await proxy();
 
-  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details:any, callback) => {    
-    if (details.url.includes("awaps.yandex.net") || details.url.includes("vh-bsvideo-converted") || details.url.includes("get-video-an")) {
+  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details: any, callback) => {
+    if (details.url.includes("awaps.yandex.net") || details.url.includes("vh-bsvideo-converted") || details.url.includes("get-video-an") || details.url.includes("an.yandex.ru")) {
       // Skip advertising
       return {
         cancel: true

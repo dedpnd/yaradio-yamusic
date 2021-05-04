@@ -11,7 +11,12 @@
             width="32"
           />
         </v-btn>
-        <v-btn to="/music" text style="border-radius: 0px 4px 4px 0px">
+        <v-btn
+          to="/music"
+          @click="openHomePage"
+          text
+          style="border-radius: 0px 4px 4px 0px"
+        >
           <v-img
             alt="Yandex Music"
             contain
@@ -39,18 +44,19 @@
           <v-card-text style="height: 360px">
             <v-container>
               <v-row>
-                <v-col cols="12">
-                  <div class="label-box">
-                    <label>Notification</label>
+                <v-col cols="12" class="pb-0">
+                  <div class="label-box label-box__without_btn ma-0">
+                    <h3>Notifications</h3>
                   </div>
                   <v-checkbox
                     v-model="allowNotification"
-                    label="Allow notification"
+                    label="Enable"
+                    class="pa-0 ma-2"
                   ></v-checkbox>
                 </v-col>
                 <v-col cols="12">
                   <div class="label-box">
-                    <label>Proxy</label>
+                    <h3>Proxy</h3>
                     <v-btn text right @click="clearProxy">
                       <v-icon>mdi-delete</v-icon>
                     </v-btn>
@@ -61,47 +67,62 @@
                         v-model="protocol"
                         :items="itemsProtocol"
                         label="Protocol"
+                        class="pt-2 pl-2"
                       ></v-select>
                     </v-col>
                     <v-col cols="5">
                       <v-text-field
                         v-model="url"
-                        label="0.0.0.0:0000"
+                        label="127.0.0.1:5050"
                         single-line
+                        class="pt-2"
                       ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-col>
-                <v-col cols="12">
-                  <div class="label-box">
-                    <label>Key shortcut</label>
+                <v-col cols="12" class="pb-0">
+                  <div class="label-box label-box__without_btn">
+                    <h3>Key shortcut</h3>
                   </div>
                   <v-col>
                     <v-row>
                       <v-checkbox
                         v-model="gsPlay"
                         label="Play | Pause"
-                        style="padding-right: 10px"
+                        class="pa-0 ml-2"
+                        v-on:change="getAlert"
                       ></v-checkbox>
+                    </v-row>
+                    <v-row>
                       <v-checkbox
                         v-model="gsNextTrack"
                         label="Next track"
-                        style="padding-right: 10px"
+                        class="pa-0 ma-0 ml-2"
+                        v-on:change="getAlert"
                       ></v-checkbox>
+                    </v-row>
+                    <v-row>
                       <v-checkbox
                         v-model="gsPrevTrack"
-                        label="Prev. track"
-                        style="padding-right: 10px"
+                        label="Previous track"
+                        class="pa-0 ma-0 ml-2"
+                        v-on:change="getAlert"
                       ></v-checkbox>
+                    </v-row>
+                    <v-row>
                       <v-checkbox
                         v-model="gsMute"
                         label="Mute"
-                        style="padding-right: 10px"
+                        class="pa-0 ma-0 ml-2"
+                        v-on:change="getAlert"
                       ></v-checkbox>
+                    </v-row>
+                    <v-row>
                       <v-checkbox
                         v-model="gsExit"
                         label="Exit"
-                        style="padding-right: 10px"
+                        class="pa-0 ma-0 ml-2"
+                        v-on:change="getAlert"
                       ></v-checkbox>
                     </v-row>
                   </v-col>
@@ -134,6 +155,17 @@
     <v-main>
       <Home />
     </v-main>
+    <v-alert
+      v-model="alert"
+      border="bottom"
+      close-text="Close Alert"
+      color="deep-purple accent-4"
+      dark
+      dismissible
+      style="position: absolute; bottom: 0px; left: 20%; right: 20%"
+    >
+      It is recommended to restart the application for correct work
+    </v-alert>
   </v-app>
 </template>
 
@@ -142,16 +174,15 @@ html {
   overflow-y: hidden !important;
 }
 .label-box {
-  height: 41px;
-  width: 50%;
-  padding: 2px;
   border-color: #7e57c2;
   border-style: solid;
   border-width: 0 0 thin 0;
 }
-.label-box > label {
-  font-size: 16px;
-  font-weight: 600;
+.label-box__without_btn {
+  padding-bottom: 13px;
+}
+.label-box > h3 {
+  display: contents;
 }
 .label-box > button {
   position: sticky;
@@ -166,13 +197,14 @@ html {
 import Vue from "vue";
 import { ipcRenderer, shell } from "electron";
 import Home from "./components/Home.vue";
-import store from "./electron/store";
+import Store from "./store";
+import storeElectron from "./electron/store";
 
 export default Vue.extend({
   name: "App",
 
   components: {
-    Home
+    Home,
   },
 
   data: () => ({
@@ -185,7 +217,8 @@ export default Vue.extend({
     gsNextTrack: false,
     gsPrevTrack: false,
     gsMute: false,
-    gsExit: false
+    gsExit: false,
+    alert: false,
   }),
   mounted() {
     //
@@ -194,8 +227,21 @@ export default Vue.extend({
     externalSupport() {
       shell.openExternal("https://www.tinkoff.ru/sl/6XuoF9Bz5bk");
     },
+    openHomePage() {
+      const exec = async (args: string) => {
+        const webview: any = document.querySelector("webview");
+
+        if (webview && !Store.state.loading) {
+          await webview.executeJavaScript(`
+            innerRoute('${args}')
+          `);
+        }
+      };
+
+      exec("/");
+    },
     getStoreValue() {
-      const settings = store.get("settings");
+      const settings = storeElectron.get("settings");
 
       this.allowNotification = settings.notifications;
       if (settings.proxy) {
@@ -225,26 +271,29 @@ export default Vue.extend({
       this.protocol = null;
       this.url = null;
     },
+    getAlert() {
+      this.alert = true;
+    },
     save() {
-      store.set("settings", {
+      storeElectron.set("settings", {
         notifications: this.allowNotification,
         proxy: {
           protocol: this.protocol,
-          url: this.url
+          url: this.url,
         },
         gs: {
           play: this.gsPlay,
           nextTrack: this.gsNextTrack,
           prevTrack: this.gsPrevTrack,
           mute: this.gsMute,
-          exit: this.gsExit
-        }
+          exit: this.gsExit,
+        },
       });
 
       ipcRenderer.sendSync("SetProxy");
 
       this.dialog = false;
-    }
-  }
+    },
+  },
 });
 </script>
