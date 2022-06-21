@@ -14,7 +14,7 @@ import proxy from './electron/proxy';
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 const _defaultHeight = 620;
-const _defaultWidth = 820;
+const _defaultWidth = 624;
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
