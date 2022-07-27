@@ -43,7 +43,7 @@ function getCtxTpl(win: IpcRenderer & BrowserWindow, app: App): any {
   ]
 }
 
-function toggleWindowVisibility(win: BrowserWindow) {
+function toggleWindowVisibility(win: BrowserWindow) {  
   if (win.isVisible()) {
     win.hide();
   } else {

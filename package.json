@@ -1,7 +1,7 @@
 {
     "name": "yaradio-yamusic",
     "productName": "YaMusic.app",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
     "main": "background.js",
     "scripts": {

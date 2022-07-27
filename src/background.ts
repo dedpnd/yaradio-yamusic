@@ -134,11 +134,16 @@ app.on("ready", async () => {
   globalShortcut(win, app);
   await proxy();
 
-  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details: any, callback) => {
+  session.fromPartition('persist:webviewsession').webRequest.onBeforeRequest({ urls: ['*://*/*'] }, (details: any, callback) => {    
     if (details.url.includes("awaps.yandex.net") ||
       details.url.includes("vh-bsvideo-converted") ||
-      details.url.includes("get-video-an") ||      
-      details.url.includes("an.yandex.ru/vmap/")) {
+      details.url.includes("get-video-an") ||
+      details.url.includes("an.yandex.ru\/vmap") ||
+      details.url.includes("yandex.ru\/an") ||
+      details.url.includes("mc.yandex.ru\/watch") ||
+      details.url.includes("strm.yandex.ru") ||
+      details.url.includes("mc.yandex.ru\/clmap") ||
+      details.url.includes("yandex.ru\/ads")){
       // Skip advertising
       return {
         cancel: true
@@ -147,7 +152,7 @@ app.on("ready", async () => {
     if (details.url.includes("start?__t")) {
       // Notification for next sing
       notification(win);
-    }
+    }    
     callback({});
   })
 });
