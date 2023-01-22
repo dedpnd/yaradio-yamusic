@@ -135,7 +135,7 @@
                 <v-icon medium>mdi-cash-usd</v-icon>
               </v-btn>
               <br />
-              Copyright 2019-2021 ©
+              Copyright 2019-2022 ©
               <a
                 href="https://github.com/dedpnd/yaradio-yamusic"
                 target="_blank"
