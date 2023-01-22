@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x]
+        python-version: ["3.7"]
 
     steps:
       - uses: actions/checkout@v3
@@ -18,6 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
       - run: npm ci
       - run: npm run electron:build -- -p always
       
