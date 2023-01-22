@@ -10,8 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
-        python-version: ["2.7"]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v3
