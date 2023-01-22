@@ -23,6 +23,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - run: npm ci
+      - run: npm i
       - run: npm run electron:build -- -p always
       
