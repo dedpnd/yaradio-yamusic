@@ -7,6 +7,7 @@
       style="height: 100%"
       allowpopups
       plugins
+      partition="persist:webviewsession"
     ></webview>
     <v-progress-circular
       :size="70"

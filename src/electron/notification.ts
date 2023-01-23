@@ -23,7 +23,7 @@ async function invoke(title: string, msg: string, img: string) {
       await fs.promises.writeFile(pathToFile, await resImg.buffer(), { encoding: 'binary' });
       imgFile = pathToFile;
     }
-
+    
     new Notification({
       title: title || 'YaMusic',
       body: msg || '-',

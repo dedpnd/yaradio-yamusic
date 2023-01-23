@@ -144,15 +144,17 @@ app.on("ready", async () => {
       details.url.includes("strm.yandex.ru") ||
       details.url.includes("mc.yandex.ru\/clmap") ||
       details.url.includes("yandex.ru\/ads")){
+
       // Skip advertising
       return {
         cancel: true
       }
     }
-    if (details.url.includes("start?__t")) {
+    if (details.url.includes("start?__t")) {      
       // Notification for next sing
       notification(win);
-    }    
+    }
+
     callback({});
   })
 });
