@@ -42,7 +42,7 @@ async function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    title: 'YaRadio',
+    title: 'YaMusic',
     x: lastWindowState ? lastWindowState.x : 100,
     y: lastWindowState ? lastWindowState.y : 100,
     height: lastWindowState ? lastWindowState.height : _defaultHeight,

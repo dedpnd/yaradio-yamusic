@@ -7,7 +7,6 @@
       style="height: 100%"
       allowpopups
       plugins
-      partition="persist:webviewsession"
     ></webview>
     <v-progress-circular
       :size="70"
@@ -36,7 +35,7 @@ import Store from "../store";
 export default Vue.extend({
   name: "Home",
   data: () => ({
-    show: true
+    show: true,
   }),
   async mounted() {
     document.title = "YaMusic";
@@ -144,6 +143,6 @@ export default Vue.extend({
       // did-stop-loading may not work
       loadstop();
     });
-  }
+  },
 });
 </script>

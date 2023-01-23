@@ -1,11 +1,12 @@
+// webpreferences="nativeWindowOpen=yes"
+
 <template>
   <div style="height: 100%">
     <webview
-      src="https://radio.yandex.ru/"
+      src="https://music.yandex.ru/radio"
       style="height: 100%"
       allowpopups
       plugins
-      partition="persist:webviewsession"
     ></webview>
     <v-progress-circular
       :size="70"
@@ -29,18 +30,22 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Store from "../store";
 
 export default Vue.extend({
   name: "Home",
   data: () => ({
-    show: true
+    show: true,
   }),
   async mounted() {
     document.title = "YaRadio";
     const webview: any = document.querySelector("webview");
 
+    Store.commit("loadingSetTrue");
+
     const loadstop = () => {
       this.show = false;
+      Store.commit("loadingSetFalse");
     };
 
     if (webview) {
@@ -48,17 +53,96 @@ export default Vue.extend({
     }
 
     webview.addEventListener("dom-ready", async () => {
-      await webview.insertCSS(`
-        div.page-root {
-          overflow: hidden;
-          overflow-x: hidden;
-          overflow-y: hidden;
+      await webview.insertCSS(`              
+        /* Overhead */
+        .d-overhead {
+          display: none !important;
         }
-        div.footer__right div {
-          display: none;
+
+        /* Header */
+        .adfox-creative {
+          display: none !important;
+        }
+
+        /* Popup */
+        .popup.popup_page.deco-pane {
+          height: 100%;
+        }
+
+        .popup-sequence__content {
+          margin-bottom: 65px;
+        }
+
+        /* Sidebar */
+        div.sidebar__under, #brandingFrame {
+          display: none !important;
+        }
+
+        div.bar-below__auth,
+        .bar-below,
+        .bar-below_plus {
+          display: none !important;
+        }
+
+        /* Footer */
+        div.footer-app-install {
+          display: none !important;
+        }
+        
+        /* Custom */
+        # CSS class dor div.centerblock-wrapper
+        .centerblock-wrapper__no_margin {
+          margin-right: 0px !important;
         }
       `);
+
+      // Hide sidebar
+      await webview.executeJavaScript(`
+      function hideSidebar(){
+        const centralBlockDOM = document.querySelector('div.centerblock-wrapper');
+        const sidebarDOM = document.querySelector('.sidebar');
+        
+        centralBlockDOM.style.marginRight = '0px';
+
+        const observer = new MutationObserver(function(mutations) {    
+          const trackSidebarDOM = document.querySelector('.sidebar-cont.sidebar-cont_shown.deco-pane'); 
+            
+          if (trackSidebarDOM) {
+              centralBlockDOM.style.marginRight = '';
+              observer.disconnect();
+          } else {
+              centralBlockDOM.style.marginRight = '0px';
+          }
+
+          setTimeout(startObserving,1000);
+        });
+
+        const startObserving = function() {
+            observer.observe(sidebarDOM, { 
+                childList: true,
+                subtree: true
+            });
+        }
+
+        startObserving();
+      }
+      
+      function innerRoute(location){
+        let tmpDom = document.createElement('a');
+        tmpDom.id = 'innerRoute'
+        tmpDom.setAttribute('href', location);
+        
+        document.body.appendChild(tmpDom);       
+        document.querySelector('#innerRoute').click();
+      }
+
+      // Init
+      hideSidebar();
+      `);
+
+      // did-stop-loading may not work
+      loadstop();
     });
-  }
+  },
 });
 </script>

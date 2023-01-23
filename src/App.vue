@@ -2,21 +2,7 @@
   <v-app>
     <v-app-bar app color="deep-purple lighten-1" dark>
       <div class="d-flex align-center">
-        <v-btn to="/radio" text style="border-radius: 4px 0px 0px 4px">
-          <v-img
-            alt="Yandex Radio"
-            contain
-            src="./media/yaradio_64x64.png"
-            transition="scale-transition"
-            width="32"
-          />
-        </v-btn>
-        <v-btn
-          to="/music"
-          @click="openHomePage"
-          text
-          style="border-radius: 0px 4px 4px 0px"
-        >
+        <v-btn to="/music" @click="openHomePage" text>
           <v-img
             alt="Yandex Music"
             contain
@@ -24,6 +10,15 @@
             transition="scale-transition"
             width="32"
             style="top: -3px"
+          />
+        </v-btn>
+        <v-btn to="/radio" text>
+          <v-img
+            alt="Yandex Radio"
+            contain
+            src="./media/yaradio_64x64.png"
+            transition="scale-transition"
+            width="32"
           />
         </v-btn>
       </div>
@@ -204,7 +199,7 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    Home
+    Home,
   },
 
   data: () => ({
@@ -218,7 +213,7 @@ export default Vue.extend({
     gsPrevTrack: false,
     gsMute: false,
     gsExit: false,
-    alert: false
+    alert: false,
   }),
   mounted() {
     //
@@ -279,21 +274,21 @@ export default Vue.extend({
         notifications: this.allowNotification,
         proxy: {
           protocol: this.protocol,
-          url: this.url
+          url: this.url,
         },
         gs: {
           play: this.gsPlay,
           nextTrack: this.gsNextTrack,
           prevTrack: this.gsPrevTrack,
           mute: this.gsMute,
-          exit: this.gsExit
-        }
+          exit: this.gsExit,
+        },
       });
 
       ipcRenderer.sendSync("SetProxy");
 
       this.dialog = false;
-    }
-  }
+    },
+  },
 });
 </script>

@@ -7,11 +7,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/radio",
     name: "YaRadio",
-    // route level code-splitting
-    // this generates a separate chunk (YaRadio.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "YandexRadio" */ "../views/YandexRadio.vue")
+    component: () => import("../views/YandexRadio.vue")
   },
   {
     path: "/music",
