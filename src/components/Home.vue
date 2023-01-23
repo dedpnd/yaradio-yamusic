@@ -48,17 +48,17 @@ export default Vue.extend({
     // Load app
     const lastApp = store.get("lastApp");
 
-    if (lastApp == "YaMusic") {
-      if (this.$route.path !== "/music")
-        this.$router.push({ name: "YaMusic" }).catch(() => {
-          /**/
-        });
-    } else {
+    if (lastApp == "YaRadio") {
       if (this.$route.path !== "/radio")
         this.$router.push({ name: "YaRadio" }).catch(() => {
           /**/
         });
+    } else {
+      if (this.$route.path !== "/music")
+        this.$router.push({ name: "YaMusic" }).catch(() => {
+          /**/
+        });
     }
-  }
+  },
 });
 </script>

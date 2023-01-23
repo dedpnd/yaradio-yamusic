@@ -1,6 +1,7 @@
 import Store from "electron-store";
 import { Rectangle } from "electron";
 
+
 interface StoreType {
   settings: {
     notifications: boolean;

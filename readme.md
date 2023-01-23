@@ -27,14 +27,28 @@
 
 ---
 
+## Support me!
+<p align="center">	
+  <a href="https://www.tinkoff.ru/sl/6XuoF9Bz5bk" target="_blank"><img src=".github/img/card.png" width="10%"/></a> 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://qiwi.com/n/CHATU497" target="_blank"><img src=".github/img/qiwi.png" width="10%"/></a> 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://yoomoney.ru/fundraise/vp4PcgKpSS0.221130" target="_blank"><img src=".github/img/yoom.png" width="10%"/></a>
+</p>
+  
+ &nbsp;   
+> Thank you all for your support! You motivate me to continue working on the application and I read all your messages :)
+-----------------------------------------  
+> Спасибо всем за поддержку! Вы мотивируете меня заниматься приложением дальше и я читаю все ваши сообщения :) 
+
 ## Installation
 Choose a package that is suitable for your OS and install.  
 
 ## Download  
 |  Windows |  Linux | Mac  |
 | ------------ | ------------ | ------------ |
-| [Download - (**exe**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-Setup-1.0.5.exe)    | [Download - (**AppImage**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-1.0.5.AppImage) | [Download - (**dmg**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-1.0.5.dmg) |
-|   | [Download - (**deb**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/yaradio-yamusic_1.0.5_amd64.deb) |   |
+| [Download - (**exe**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-Setup-1.0.6.exe)    | [Download - (**AppImage**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-1.0.6.AppImage) | [Download - (**dmg**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/YaMusic.app-1.0.6.dmg) |
+|   | [Download - (**deb**)](https://github.com/dedpnd/yaradio-yamusic/releases/latest/download/yaradio-yamusic_1.0.6_amd64.deb) |   |
 
 
 

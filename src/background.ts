@@ -42,7 +42,7 @@ async function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    title: 'YaRadio',
+    title: 'YaMusic',
     x: lastWindowState ? lastWindowState.x : 100,
     y: lastWindowState ? lastWindowState.y : 100,
     height: lastWindowState ? lastWindowState.height : _defaultHeight,
@@ -144,15 +144,17 @@ app.on("ready", async () => {
       details.url.includes("strm.yandex.ru") ||
       details.url.includes("mc.yandex.ru\/clmap") ||
       details.url.includes("yandex.ru\/ads")){
+
       // Skip advertising
       return {
         cancel: true
       }
     }
-    if (details.url.includes("start?__t")) {
+    if (details.url.includes("start?__t")) {      
       // Notification for next sing
       notification(win);
-    }    
+    }
+
     callback({});
   })
 });
