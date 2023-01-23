@@ -27,6 +27,20 @@
 
 ---
 
+## Support me!
+<p align="center">	
+  <a href="https://www.tinkoff.ru/sl/6XuoF9Bz5bk" target="_blank"><img src=".github/img/card.png" width="10%"/></a> 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://qiwi.com/n/CHATU497" target="_blank"><img src=".github/img/qiwi.png" width="10%"/></a> 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://yoomoney.ru/fundraise/vp4PcgKpSS0.221130" target="_blank"><img src=".github/img/yoom.png" width="10%"/></a>
+</p>
+  
+ &nbsp;   
+> Thank you all for your support! You motivate me to continue working on the application and I read all your messages :)
+-----------------------------------------  
+> Спасибо всем за поддержку! Вы мотивируете меня заниматься приложением дальше и я читаю все ваши сообщения :) 
+
 ## Installation
 Choose a package that is suitable for your OS and install.  
 
