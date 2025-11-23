@@ -119,8 +119,8 @@ app.on("activate", () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
-    // Install Vue Devtools
+  // Skip auto-installing Vue Devtools to avoid extension manifest warnings on old Electron/Chrome
+  if (isDevelopment && !process.env.IS_TEST && process.env.VUE_DEVTOOLS === "1") {
     try {
       await installExtension(VUEJS_DEVTOOLS);
     } catch (e) {
