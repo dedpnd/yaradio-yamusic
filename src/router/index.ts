@@ -5,14 +5,17 @@ Vue.use(Router);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/radio",
-    name: "YaRadio",
-    component: () => import("../views/YandexRadio.vue"),
+    path: "/",
+    redirect: "/music",
   },
   {
     path: "/music",
     name: "YaMusic",
     component: () => import("../views/YandexMusic.vue"),
+  },
+  {
+    path: "*",
+    redirect: "/music",
   },
 ];
 

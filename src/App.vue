@@ -9,24 +9,8 @@
         flat
       >
         <div class="d-flex align-center">
-          <v-btn to="/music" @click="openHomePage" text tile>
-            <v-img
-              alt="Yandex Music"
-              contain
-              :src="yamusicLogo"
-              transition="scale-transition"
-              width="32"
-              style="top: -3px"
-            />
-          </v-btn>
-          <v-btn to="/radio" text tile>
-            <v-img
-              alt="Yandex Radio"
-              contain
-              :src="yaradioLogo"
-              transition="scale-transition"
-              width="32"
-            />
+          <v-btn icon text @click="refreshWebview">
+            <v-icon large>$refresh</v-icon>
           </v-btn>
         </div>
 
@@ -252,25 +236,18 @@ export default defineComponent({
     gsMute: false,
     gsExit: false,
     alert: false,
-    yamusicLogo,
-    yaradioLogo,
   }),
   methods: {
     externalSupport() {
       shell.openExternal("https://www.tinkoff.ru/sl/6XuoF9Bz5bk");
     },
-    openHomePage() {
-      const exec = async (args: string) => {
-        const webview: any = document.querySelector("webview");
-
-        if (webview && !Store.state.loading) {
-          await webview.executeJavaScript(`
-            innerRoute('${args}')
-          `);
-        }
-      };
-
-      exec("/");
+    refreshWebview() {
+      const webview: any = document.querySelector("webview");
+      if (webview && typeof webview.reloadIgnoringCache === "function") {
+        webview.reloadIgnoringCache();
+      } else if (webview && typeof webview.reload === "function") {
+        webview.reload();
+      }
     },
     getStoreValue() {
       const settings = storeElectron.get("settings");

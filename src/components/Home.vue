@@ -45,19 +45,11 @@ export default defineComponent({
       await getTrackInfo();
     });
 
-    // Load app
-    const lastApp = store.get("lastApp");
-
-    if (lastApp == "YaRadio") {
-      if (this.$route.path !== "/radio")
-        this.$router.push({ name: "YaRadio" }).catch(() => {
-          /**/
-        });
-    } else {
-      if (this.$route.path !== "/music")
-        this.$router.push({ name: "YaMusic" }).catch(() => {
-          /**/
-        });
+    // Ensure we land on the music route
+    if (this.$route.path !== "/music") {
+      this.$router.push({ name: "YaMusic" }).catch(() => {
+        /**/
+      });
     }
   },
 });

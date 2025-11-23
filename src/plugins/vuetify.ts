@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-import { mdiCog, mdiDelete, mdiCashMultiple } from "@mdi/js";
+import { mdiCog, mdiDelete, mdiCashMultiple, mdiRefresh } from "@mdi/js";
 
 Vue.use(Vuetify);
 
@@ -12,6 +12,7 @@ export default new Vuetify({
       settings: mdiCog,
       delete: mdiDelete,
       cash: mdiCashMultiple,
+      refresh: mdiRefresh,
     },
   },
   theme: {
