@@ -9,44 +9,20 @@
       plugins
       partition="persist:webviewsession"
     ></webview>
-    <v-progress-circular
-      :size="70"
-      :width="7"
-      color="purple"
-      class="sppiner"
-      indeterminate
-      v-if="show"
-    ></v-progress-circular>
   </div>
 </template>
 
-<style>
-.sppiner {
-  z-index: 1;
-  top: 40%;
-  left: 50%;
-  position: absolute;
-}
-</style>
-
 <script lang="ts">
 import { defineComponent } from "vue";
-import Store from "../store";
 
 export default defineComponent({
   name: "Home",
-  data: () => ({
-    show: true,
-  }),
   async mounted() {
     document.title = "YaMusic";
     const webview: any = document.querySelector("webview");
 
-    Store.commit("loadingSetTrue");
-
     const loadstop = () => {
-      this.show = false;
-      Store.commit("loadingSetFalse");
+      /** no-op, retained for backward compatibility */
     };
 
     if (webview) {

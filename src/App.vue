@@ -1,34 +1,41 @@
 <template>
   <v-app>
-    <v-app-bar app color="deep-purple lighten-1" dark>
-      <div class="d-flex align-center">
-        <v-btn to="/music" @click="openHomePage" text tile>
-          <v-img
-            alt="Yandex Music"
-            contain
-            :src="yamusicLogo"
-            transition="scale-transition"
-            width="32"
-            style="top: -3px"
-          />
-        </v-btn>
-        <v-btn to="/radio" text tile>
-          <v-img
-            alt="Yandex Radio"
-            contain
-            :src="yaradioLogo"
-            transition="scale-transition"
-            width="32"
-          />
-        </v-btn>
-      </div>
+    <div class="app-bar-hover" tabindex="0">
+      <v-app-bar
+        color="deep-purple lighten-1"
+        dark
+        class="app-bar-slide"
+        dense
+        flat
+      >
+        <div class="d-flex align-center">
+          <v-btn to="/music" @click="openHomePage" text tile>
+            <v-img
+              alt="Yandex Music"
+              contain
+              :src="yamusicLogo"
+              transition="scale-transition"
+              width="32"
+              style="top: -3px"
+            />
+          </v-btn>
+          <v-btn to="/radio" text tile>
+            <v-img
+              alt="Yandex Radio"
+              contain
+              :src="yaradioLogo"
+              transition="scale-transition"
+              width="32"
+            />
+          </v-btn>
+        </div>
 
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-      <v-dialog v-model="dialog" persistent max-width="600px" scrollable>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on" @click="getStoreValue" text>
-            <v-icon large>$settings</v-icon>
+        <v-dialog v-model="dialog" persistent max-width="600px" scrollable>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" @click="getStoreValue" text>
+              <v-icon large>$settings</v-icon>
           </v-btn>
         </template>
         <v-card>
@@ -145,9 +152,10 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </v-app-bar>
+      </v-app-bar>
+    </div>
 
-    <v-main>
+    <v-main class="main-with-hover-gap">
       <Home />
     </v-main>
     <v-alert
@@ -187,6 +195,36 @@ html {
 }
 .v-messages {
   min-height: 0px im !important;
+}
+.app-bar-hover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  z-index: 20;
+  background: linear-gradient(rgba(103, 58, 183, 0.25), rgba(103, 58, 183, 0));
+}
+.app-bar-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%) !important;
+  transition: transform 0.25s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+.app-bar-hover:hover .app-bar-slide {
+  transform: translateY(0) !important;
+  pointer-events: auto;
+}
+.app-bar-hover:focus-within .app-bar-slide {
+  transform: translateY(0) !important;
+  pointer-events: auto;
+}
+.main-with-hover-gap {
+  padding-top: 0;
 }
 </style>
 
