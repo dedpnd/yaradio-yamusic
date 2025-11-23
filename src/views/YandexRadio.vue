@@ -36,7 +36,7 @@ import Store from "../store";
 export default Vue.extend({
   name: "Home",
   data: () => ({
-    show: true,
+    show: true
   }),
   async mounted() {
     document.title = "YaRadio";
@@ -152,6 +152,6 @@ export default Vue.extend({
         loadstop();
       });
     }
-  },
+  }
 });
 </script>

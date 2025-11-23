@@ -1,6 +1,6 @@
 import Store from "electron-store";
 import { Rectangle } from "electron";
-
+import * as path from "path";
 
 interface StoreType {
   settings: {
@@ -22,7 +22,11 @@ interface StoreType {
   "quit?": boolean;
 }
 
+const electron = require("electron");
+const appInstance = electron.app || (electron.remote && electron.remote.app);
+
 const store = new Store({
+  cwd: appInstance ? undefined : path.join(process.cwd(), "user-data"),
   defaults: {
     settings: {
       notifications: true,
