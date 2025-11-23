@@ -1,4 +1,5 @@
 import Vue from "vue";
+import "@mdi/font/css/materialdesignicons.css";
 import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
@@ -11,5 +12,5 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

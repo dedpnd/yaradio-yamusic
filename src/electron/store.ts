@@ -1,5 +1,9 @@
 import Store from "electron-store";
-import { Rectangle } from "electron";
+import {
+  Rectangle,
+  app as electronApp,
+  remote as electronRemote,
+} from "electron";
 import * as path from "path";
 
 interface StoreType {
@@ -22,8 +26,7 @@ interface StoreType {
   "quit?": boolean;
 }
 
-const electron = require("electron");
-const appInstance = electron.app || (electron.remote && electron.remote.app);
+const appInstance = electronApp || (electronRemote && electronRemote.app);
 
 const store = new Store({
   cwd: appInstance ? undefined : path.join(process.cwd(), "user-data"),
@@ -32,20 +35,20 @@ const store = new Store({
       notifications: true,
       proxy: {
         protocol: null,
-        url: null
+        url: null,
       },
       gs: {
         play: true,
         nextTrack: true,
         prevTrack: true,
         mute: true,
-        exit: true
-      }
+        exit: true,
+      },
     },
     lastApp: null,
     lastWindowState: null,
-    "quit?": false
-  }
+    "quit?": false,
+  },
 });
 
 store.set("quit?", false);
@@ -57,7 +60,7 @@ if (!store.get("settings.gs")) {
     nextTrack: true,
     prevTrack: true,
     mute: true,
-    exit: true
+    exit: true,
   });
 }
 

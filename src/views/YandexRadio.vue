@@ -30,13 +30,13 @@
 </style>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import Store from "../store";
 
-export default Vue.extend({
+export default defineComponent({
   name: "Home",
   data: () => ({
-    show: true
+    show: true,
   }),
   async mounted() {
     document.title = "YaRadio";
@@ -152,6 +152,6 @@ export default Vue.extend({
         loadstop();
       });
     }
-  }
+  },
 });
 </script>

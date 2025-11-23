@@ -1,14 +1,20 @@
 import Vue from "vue";
-import Vuetify from "vuetify/lib/framework";
-import "@mdi/font/css/materialdesignicons.css";
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
+import { mdiCog, mdiDelete, mdiCashMultiple } from "@mdi/js";
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
-  theme: {
-    options: {
-      customProperties: true
+  icons: {
+    iconfont: "mdiSvg",
+    values: {
+      settings: mdiCog,
+      delete: mdiDelete,
+      cash: mdiCashMultiple,
     },
+  },
+  theme: {
     themes: {
       light: {
         primary: "#ee44aa",
@@ -17,8 +23,8 @@ export default new Vuetify({
         error: "#FF5252",
         info: "#2196F3",
         success: "#4CAF50",
-        warning: "#FFC107"
-      }
-    }
-  }
+        warning: "#FFC107",
+      },
+    },
+  },
 });

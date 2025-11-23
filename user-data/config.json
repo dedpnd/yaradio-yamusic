@@ -1,0 +1,19 @@
+{
+	"settings": {
+		"notifications": true,
+		"proxy": {
+			"protocol": null,
+			"url": null
+		},
+		"gs": {
+			"play": true,
+			"nextTrack": true,
+			"prevTrack": true,
+			"mute": true,
+			"exit": true
+		}
+	},
+	"lastApp": null,
+	"lastWindowState": null,
+	"quit?": false
+}

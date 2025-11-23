@@ -1,6 +1,9 @@
-/* eslint-disable prettier/prettier */
+/* eslint-disable prettier/prettier, @typescript-eslint/no-var-requires */
 const path = require("path");
 const webpack = require("webpack");
+
+// Disable fork-ts-checker from @vue/cli-plugin-typescript (causes Ajv errors on modern Node)
+process.env.VUE_CLI_TEST = "true";
 
 module.exports = {
     transpileDependencies: ["vuetify"],
@@ -10,6 +13,7 @@ module.exports = {
         config.resolve.alias.set("fs/promises", path.resolve(__dirname, "src/electron/fs-promises-shim.js"));
         config.resolve.alias.set("vue-cli-plugin-electron-builder/lib/installVueDevtools", path.resolve(__dirname, "src/electron/noop-devtools.js"));
         config.resolve.alias.set("electron-devtools-installer", path.resolve(__dirname, "src/electron/noop-electron-devtools-installer.js"));
+        // Vue CLI/webpack 4 doesn't understand Vuetify 3 export maps; point to real files
         // Disable fork-ts-checker (spawns a child process that can fail with EPERM on some Windows setups)
         config.plugins.delete("fork-ts-checker");
         config
@@ -44,13 +48,20 @@ module.exports = {
         }
     },
     pluginOptions: {
+        typescript: {
+            forkTsChecker: false
+        },
         electronBuilder: {
             nodeIntegration: true,
+            mainProcessFile: "src/background.ts",
             chainWebpackMainProcess: config => {
                 config.output.hashFunction("sha256");
                 config.resolve.alias.set("vue-cli-plugin-electron-builder/lib/installVueDevtools", path.resolve(__dirname, "src/electron/noop-devtools.js"));
                 config.resolve.alias.set("fs/promises", path.resolve(__dirname, "src/electron/fs-promises-shim.js"));
                 config.resolve.alias.set("electron-devtools-installer", path.resolve(__dirname, "src/electron/noop-electron-devtools-installer.js"));
+                config.plugins.delete("fork-ts-checker");
+                config.resolve.extensions
+                    .merge([".ts", ".tsx", ".js", ".json"]);
                 config
                     .plugin("replace-devtools-main")
                     .use(webpack.NormalModuleReplacementPlugin, [
@@ -63,6 +74,13 @@ module.exports = {
                 config.resolve.alias.set("vue-cli-plugin-electron-builder/lib/installVueDevtools", path.resolve(__dirname, "src/electron/noop-devtools.js"));
                 config.resolve.alias.set("fs/promises", path.resolve(__dirname, "src/electron/fs-promises-shim.js"));
                 config.resolve.alias.set("electron-devtools-installer", path.resolve(__dirname, "src/electron/noop-electron-devtools-installer.js"));
+                config.plugins.delete("fork-ts-checker");
+                config.resolve.extensions.merge([".ts", ".tsx", ".js", ".json"]);
+                config.externals({
+                    electron: "commonjs2 electron",
+                    "electron-store": "commonjs2 electron-store",
+                    conf: "commonjs2 conf"
+                });
                 config
                     .plugin("replace-devtools-renderer")
                     .use(webpack.NormalModuleReplacementPlugin, [

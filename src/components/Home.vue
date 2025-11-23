@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { ipcRenderer } from "electron";
 
 import store from "../electron/store";
 
-export default Vue.extend({
+export default defineComponent({
   name: "Home",
   data: () => ({
     //
@@ -59,6 +59,6 @@ export default Vue.extend({
           /**/
         });
     }
-  }
+  },
 });
 </script>

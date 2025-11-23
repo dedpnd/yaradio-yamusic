@@ -1,87 +1,91 @@
 {
-    "name": "yaradio-yamusic",
-    "productName": "YaMusic.app",
-    "version": "1.0.6",
-    "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
-    "main": "background.js",
-    "scripts": {
-        "serve": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 SASS_SILENCE_DEPRECATIONS=all vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint",
-        "electron:build": "vue-cli-service electron:build -mwl",
-        "electron:build:win": "vue-cli-service electron:build --win",
-        "electron:serve": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 SASS_SILENCE_DEPRECATIONS=all vue-cli-service electron:serve",
-        "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
-        "postinstall": "electron-builder install-app-deps",
-        "postuninstall": "electron-builder install-app-deps",
-        "gen:changelog": "docker run -it --rm --env-file gh-token.env -v docker:/usr/local/src/your-app ferrarimarco/github-changelog-generator -u dedpnd -p yaradio-yamusic"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/dedpnd/yaradio-yamusic.git"
-    },
-    "author": "dedpnd <dedpnd@example.com>",
-    "license": "MIT",
-    "keyword": [
-        "electron",
-        "yandex music app",
-        "yandex radio app",
-        "electron music player",
-        "yamusic",
-        "yaradio",
-        "Яндекс Музыка",
-        "Яндекс Радио"
-    ],
-    "bugs": {
-        "url": "https://github.com/dedpnd/yaradio-yamusic/issues"
-    },
-    "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
-    "dependencies": {
-        "@mdi/font": "^3.6.95",
-        "core-js": "^3.6.5",
-        "electron-fetch": "^1.7.2",
-        "electron-store": "^6.0.1",
-        "electron-updater": "^4.3.5",
-        "register-service-worker": "^1.7.1",
-        "roboto-fontface": "*",
-        "vue": "^2.6.11",
-        "vue-router": "^3.2.0",
-        "vuetify": "^2.5.3",
-        "vuex": "^3.4.0"
-    },
-    "devDependencies": {
-        "@types/electron-devtools-installer": "^2.2.0",
-        "@typescript-eslint/eslint-plugin": "^2.33.0",
-        "@typescript-eslint/parser": "^2.33.0",
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-pwa": "~4.5.0",
-        "@vue/cli-plugin-router": "~4.5.0",
-        "@vue/cli-plugin-typescript": "~4.5.0",
-        "@vue/cli-plugin-vuex": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/eslint-config-prettier": "^6.0.0",
-        "@vue/eslint-config-typescript": "^5.0.2",
-        "electron": "^9.4.4",
-        "electron-devtools-installer": "^3.1.0",
-        "electron-icon-builder": "^2.0.1",
-        "eslint": "^6.7.2",
-        "eslint-plugin-prettier": "^3.1.3",
-        "eslint-plugin-vue": "^6.2.2",
-        "cross-env": "^7.0.3",
-        "cache-loader": "^4.1.0",
-        "prettier": "^1.19.1",
-        "sass": "^1.19.0",
-        "sass-loader": "^8.0.2",
-        "typescript": "~3.9.3",
-        "vue-cli-plugin-electron-builder": "~2.0.0-rc.5",
-        "vue-cli-plugin-vuetify": "~2.0.9",
-        "vue-template-compiler": "^2.6.11",
-        "vuetify-loader": "^1.3.0"
-    },
-    "overrides": {
-        "vue-cli-plugin-electron-builder": {
-          "electron-builder": "^23.1.0"
-        }
+  "name": "yaradio-yamusic",
+  "productName": "YaMusic.app",
+  "version": "1.0.6",
+  "description": "Yandex Radio and Yandex Music desktop application, two in one :)",
+  "scripts": {
+    "serve": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 SASS_SILENCE_DEPRECATIONS=all vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build -mwl",
+    "electron:build:win": "vue-cli-service electron:build --win",
+    "electron:serve": "cross-env BROWSERSLIST_IGNORE_OLD_DATA=1 SASS_SILENCE_DEPRECATIONS=all vue-cli-service electron:serve",
+    "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "gen:changelog": "docker run -it --rm --env-file gh-token.env -v docker:/usr/local/src/your-app ferrarimarco/github-changelog-generator -u dedpnd -p yaradio-yamusic"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dedpnd/yaradio-yamusic.git"
+  },
+  "author": "dedpnd <dedpnd@example.com>",
+  "license": "MIT",
+  "keyword": [
+    "electron",
+    "yandex music app",
+    "yandex radio app",
+    "electron music player",
+    "yamusic",
+    "yaradio",
+    "Яндекс Музыка",
+    "Яндекс Радио"
+  ],
+  "bugs": {
+    "url": "https://github.com/dedpnd/yaradio-yamusic/issues"
+  },
+  "homepage": "https://github.com/dedpnd/yaradio-yamusic#readme",
+  "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/font": "^7.4.47",
+    "core-js": "^3.37.0",
+    "electron-fetch": "^1.7.2",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.3.9",
+    "register-service-worker": "^1.7.2",
+    "roboto-fontface": "^0.10.0",
+    "vue": "2.7.16",
+    "vue-router": "^3.5.4",
+    "vuex": "^3.6.2",
+    "vuetify": "^2.7.1"
+  },
+  "devDependencies": {
+    "@types/electron-devtools-installer": "^2.2.3",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-eslint": "~4.5.15",
+    "@vue/cli-plugin-pwa": "~4.5.15",
+    "@vue/cli-plugin-router": "~4.5.15",
+    "@vue/cli-plugin-typescript": "~4.5.15",
+    "@vue/cli-plugin-vuex": "~4.5.15",
+    "@vue/cli-service": "~4.5.15",
+    "@vue/eslint-config-prettier": "6.0.0",
+    "@vue/eslint-config-typescript": "5.1.0",
+    "cache-loader": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "crypto-browserify": "^3.12.1",
+    "electron": "^27.3.11",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-icon-builder": "^2.0.1",
+    "eslint": "6.8.0",
+    "eslint-plugin-prettier": "3.4.1",
+    "eslint-plugin-vue": "6.2.2",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "prettier": "2.8.8",
+    "sass": "^1.72.0",
+    "sass-loader": "10.4.1",
+    "stream-browserify": "^3.0.0",
+    "ts-loader": "^8.4.0",
+    "typescript": "^4.5.5",
+    "vue-cli-plugin-electron-builder": "~2.1.1",
+    "vue-template-compiler": "2.7.16",
+    "vuetify-loader": "^1.9.2"
+  },
+  "overrides": {
+    "vue-cli-plugin-electron-builder": {
+      "electron-builder": "^23.1.0"
     }
+  }
 }

@@ -1,25 +1,25 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import Router, { RouteConfig } from "vue-router";
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/radio",
     name: "YaRadio",
-    component: () => import("../views/YandexRadio.vue")
+    component: () => import("../views/YandexRadio.vue"),
   },
   {
     path: "/music",
     name: "YaMusic",
-    component: () => import("../views/YandexMusic.vue")
-  }
+    component: () => import("../views/YandexMusic.vue"),
+  },
 ];
 
-const router = new VueRouter({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

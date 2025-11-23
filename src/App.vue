@@ -2,21 +2,21 @@
   <v-app>
     <v-app-bar app color="deep-purple lighten-1" dark>
       <div class="d-flex align-center">
-        <v-btn to="/music" @click="openHomePage" text>
+        <v-btn to="/music" @click="openHomePage" text tile>
           <v-img
             alt="Yandex Music"
             contain
-            src="./media/yamusic_64x64.png"
+            :src="yamusicLogo"
             transition="scale-transition"
             width="32"
             style="top: -3px"
           />
         </v-btn>
-        <v-btn to="/radio" text>
+        <v-btn to="/radio" text tile>
           <v-img
             alt="Yandex Radio"
             contain
-            src="./media/yaradio_64x64.png"
+            :src="yaradioLogo"
             transition="scale-transition"
             width="32"
           />
@@ -28,7 +28,7 @@
       <v-dialog v-model="dialog" persistent max-width="600px" scrollable>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" @click="getStoreValue" text>
-            <v-icon large>mdi-settings</v-icon>
+            <v-icon large>$settings</v-icon>
           </v-btn>
         </template>
         <v-card>
@@ -53,7 +53,7 @@
                   <div class="label-box">
                     <h3>Proxy</h3>
                     <v-btn text right @click="clearProxy">
-                      <v-icon>mdi-delete</v-icon>
+                      <v-icon>$delete</v-icon>
                     </v-btn>
                   </div>
                   <v-row>
@@ -127,7 +127,7 @@
             <small>
               You can support me :)
               <v-btn @click="externalSupport" text>
-                <v-icon medium>mdi-cash-usd</v-icon>
+                <v-icon medium>$cash</v-icon>
               </v-btn>
               <br />
               Copyright 2019-2022 ©
@@ -165,6 +165,8 @@
 </template>
 
 <style>
+@import "~@mdi/font/css/materialdesignicons.css";
+
 html {
   overflow-y: hidden !important;
 }
@@ -189,19 +191,17 @@ html {
 </style>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "vue";
 import { ipcRenderer, shell } from "electron";
 import Home from "./components/Home.vue";
 import Store from "./store";
 import storeElectron from "./electron/store";
+import yamusicLogo from "@/media/yamusic_64x64.png";
+import yaradioLogo from "@/media/yaradio_64x64.png";
 
-export default Vue.extend({
+export default defineComponent({
   name: "App",
-
-  components: {
-    Home
-  },
-
+  components: { Home },
   data: () => ({
     dialog: false,
     allowNotification: false,
@@ -213,11 +213,10 @@ export default Vue.extend({
     gsPrevTrack: false,
     gsMute: false,
     gsExit: false,
-    alert: false
+    alert: false,
+    yamusicLogo,
+    yaradioLogo,
   }),
-  mounted() {
-    //
-  },
   methods: {
     externalSupport() {
       shell.openExternal("https://www.tinkoff.ru/sl/6XuoF9Bz5bk");
@@ -274,21 +273,21 @@ export default Vue.extend({
         notifications: this.allowNotification,
         proxy: {
           protocol: this.protocol,
-          url: this.url
+          url: this.url,
         },
         gs: {
           play: this.gsPlay,
           nextTrack: this.gsNextTrack,
           prevTrack: this.gsPrevTrack,
           mute: this.gsMute,
-          exit: this.gsExit
-        }
+          exit: this.gsExit,
+        },
       });
 
       ipcRenderer.sendSync("SetProxy");
 
       this.dialog = false;
-    }
-  }
+    },
+  },
 });
 </script>
