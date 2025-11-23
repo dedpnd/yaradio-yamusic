@@ -2,7 +2,6 @@
 
 import * as path from 'path';
 import { app, protocol, session, BrowserWindow } from "electron";
-import { autoUpdater } from "electron-updater"
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 
@@ -69,6 +68,7 @@ async function createWindow() {
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
+    const { autoUpdater } = require("electron-updater");
     createProtocol("app");
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
